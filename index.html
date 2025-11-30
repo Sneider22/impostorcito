@@ -620,6 +620,46 @@
             border: 2px solid rgba(139, 92, 246, 0.4);
             backdrop-filter: blur(20px);
         }
+
+        /* Category card */
+        .category-card {
+            background: rgba(15, 23, 42, 0.7);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(139, 92, 246, 0.5);
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3);
+        }
+
+        .category-card.selected {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.3), rgba(236, 72, 153, 0.3));
+            border-color: rgba(139, 92, 246, 0.6);
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
+        }
+
+        .category-card.selected::before {
+            content: '✓';
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            width: 1.5rem;
+            height: 1.5rem;
+            background: linear-gradient(135deg, #10b981, #059669);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 900;
+            font-size: 0.875rem;
+        }
     </style>
 </head>
 <body class="h-screen flex flex-col items-center justify-center overflow-hidden">
@@ -672,12 +712,43 @@
         
         <div class="mt-4 md:mt-6 text-center">
             <p class="text-slate-500 text-xs md:text-sm font-medium opacity-70">
-                © Sneider y Raiber 
+                © Sneider, Nicol y Raiber 
             </p>
         </div>
     </div>
 
-    <!-- PANTALLA 2: PASE -->
+    <!-- PANTALLA 2: SELECCIÓN DE CATEGORÍAS -->
+    <div id="screen-categories" class="hidden-screen w-full flex flex-col h-full py-4 md:py-6 animate-enter app-shell">
+        <div class="text-center mb-6 md:mb-8">
+            <h1 class="text-3xl md:text-5xl font-black title-gradient tracking-wider mb-2 md:mb-3">
+                Elige las Categorías
+            </h1>
+            <p class="text-slate-400 text-sm md:text-base mt-2 font-semibold">Selecciona las categorías que quieres jugar</p>
+        </div>
+
+        <div class="glass-panel flex-1 rounded-2xl md:rounded-3xl p-5 md:p-6 overflow-y-auto custom-scrollbar">
+            <div id="categories-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
+                <!-- Categorías dinámicas -->
+            </div>
+        </div>
+
+        <div class="mt-6 md:mt-8 space-y-3 md:space-y-4">
+            <button onclick="selectAllCategories()" class="btn-secondary text-white w-full py-3 md:py-4 rounded-xl md:rounded-2xl font-bold text-sm md:text-base">
+                ✅ Seleccionar Todas
+            </button>
+            <button onclick="deselectAllCategories()" class="btn-secondary text-white w-full py-3 md:py-4 rounded-xl md:rounded-2xl font-bold text-sm md:text-base">
+                ❌ Deseleccionar Todas
+            </button>
+            <button onclick="confirmCategories()" class="btn-neon w-full py-4 md:py-6 rounded-2xl md:rounded-3xl text-base md:text-xl font-black text-white shadow-2xl tracking-wider">
+                🚀 Continuar
+            </button>
+            <button onclick="goBackToSetup()" class="text-slate-400 text-sm md:text-base py-2 hover:text-white transition-colors font-semibold text-center w-full">
+                ← Volver
+            </button>
+        </div>
+    </div>
+
+    <!-- PANTALLA 3: PASE -->
     <div id="screen-pass" class="hidden-screen w-full text-center animate-enter h-full flex flex-col justify-center app-shell px-4 md:px-6">
         <div class="mb-6 md:mb-16 relative group">
             <div class="absolute inset-0 bg-pink-600 blur-[60px] md:blur-[80px] opacity-30 group-hover:opacity-40 transition-opacity"></div>
@@ -783,7 +854,7 @@
         
         <div class="mt-4 md:mt-6 text-center pb-2">
             <p class="text-slate-500 text-xs md:text-sm font-medium opacity-70">
-                © Sneider y Raiber
+                © Sneider, Nicol y Raiber
             </p>
         </div>
     </div>
@@ -792,15 +863,15 @@
         /* --- BASE DE DATOS EXPANDIDA CON MÚLTIPLES PISTAS --- */
         const database = [
             // DEPORTES (cada palabra tiene 2 pistas: [pista1, pista2])
-            {cat:"Deporte", word:"Fútbol", hints:["Once", "Balón"]}, {cat:"Deporte", word:"Voleibol", hints:["Red", "Equipo"]},
-            {cat:"Deporte", word:"Tenis", hints:["Raqueta", "Cancha"]}, {cat:"Deporte", word:"Pádel", hints:["Vidrio", "Pared"]},
-            {cat:"Deporte", word:"Baloncesto", hints:["Canasta", "Aro"]}, {cat:"Deporte", word:"Béisbol", hints:["Bate", "Diamante"]},
-            {cat:"Deporte", word:"Fórmula 1", hints:["Circuito", "Velocidad"]}, {cat:"Deporte", word:"Boxeo", hints:["Ring", "Guantes"]},
-            {cat:"Deporte", word:"Natación", hints:["Estilo", "Piscina"]}, {cat:"Deporte", word:"Surf", hints:["Tabla", "Ola"]},
-            {cat:"Deporte", word:"Golf", hints:["Palo", "Campo"]}, {cat:"Deporte", word:"Rugby", hints:["Oval", "Tackle"]},
-            {cat:"Deporte", word:"Karate", hints:["Arte", "Cinturón"]}, {cat:"Deporte", word:"Gimnasio", hints:["Máquinas", "Pesas"]},
-            {cat:"Deporte", word:"Ciclismo", hints:["Pedales", "Bicicleta"]}, {cat:"Deporte", word:"Atletismo", hints:["Pista", "Carrera"]},
-            {cat:"Deporte", word:"Hockey", hints:["Palo", "Disco"]}, {cat:"Deporte", word:"Esquí", hints:["Nieve", "Montaña"]},
+            {cat:"Deporte", word:"Fútbol", hints:["Once", "Balón"]}, {cat:"Deporte", word:"Voleibol", hints:["Red", "Saque"]},
+            {cat:"Deporte", word:"Tenis", hints:["Verde", "Cancha"]}, {cat:"Deporte", word:"Pádel", hints:["Vidrio", "Pared"]},
+            {cat:"Deporte", word:"Baloncesto", hints:["Anaranjado", "Aro"]}, {cat:"Deporte", word:"Béisbol", hints:["Bases", "Diamante"]},
+            {cat:"Deporte", word:"Fórmula 1", hints:["Circuito", "Velocidad"]}, {cat:"Deporte", word:"Boxeo", hints:["Guantes", "Round"]},
+            {cat:"Deporte", word:"Natación", hints:["Tabla", "Piscina"]}, {cat:"Deporte", word:"Surf", hints:["Tabla", "Ola"]},
+            {cat:"Deporte", word:"Golf", hints:["Palo", "Campo"]}, 
+            {cat:"Deporte", word:"Karate", hints:["Cinturon", "Tabla"]}, {cat:"Deporte", word:"Gimnasio", hints:["Máquinas", "Pesas"]},
+            {cat:"Deporte", word:"Ciclismo", hints:["Velocidad", "Manubrio"]}, {cat:"Deporte", word:"Atletismo", hints:["Pista", "Carrera"]},
+            {cat:"Deporte", word:"Hockey", hints:["Disco", "Palo"]}, {cat:"Deporte", word:"Esquí", hints:["Frio", "Montaña"]},
             {cat:"Deporte", word:"Bádminton", hints:["Pluma", "Red"]}, {cat:"Deporte", word:"Ping Pong", hints:["Mesa", "Paleta"]},
             {cat:"Deporte", word:"Arquería", hints:["Flecha", "Arco"]}, {cat:"Deporte", word:"Escalada", hints:["Cuerda", "Roca"]},
 
@@ -872,7 +943,37 @@
             {cat:"Tech/Casa", word:"Tablet", hints:["Táctil", "Pantalla"]}, {cat:"Tech/Casa", word:"Altavoz", hints:["Sonido", "Música"]},
             {cat:"Tech/Casa", word:"Cámara", hints:["Fotos", "Lente"]}, {cat:"Tech/Casa", word:"Impresora", hints:["Papel", "Tinta"]},
             {cat:"Tech/Casa", word:"Router", hints:["Red", "Internet"]}, {cat:"Tech/Casa", word:"Mouse", hints:["Clic", "Ratón"]},
-            {cat:"Tech/Casa", word:"Teclado", hints:["Letras", "Teclas"]}, {cat:"Tech/Casa", word:"Monitor", hints:["Visual", "Pantalla"]}
+            {cat:"Tech/Casa", word:"Teclado", hints:["Letras", "Teclas"]}, {cat:"Tech/Casa", word:"Monitor", hints:["Visual", "Pantalla"]},
+
+            // INGENIERÍA DE SISTEMAS
+            {cat:"Ing. Sistemas", word:"Python", hints:["Serpiente", "Interpretado"]}, {cat:"Ing. Sistemas", word:"JavaScript", hints:["Navegador", "Web"]},
+            {cat:"Ing. Sistemas", word:"Java", hints:["Café", "POO"]}, {cat:"Ing. Sistemas", word:"C++", hints:["Plus", "POO"]},
+            {cat:"Ing. Sistemas", word:"HTML", hints:["Web", "Etiquetas"]}, {cat:"Ing. Sistemas", word:"CSS", hints:["Estilos", "Diseño"]},
+            {cat:"Ing. Sistemas", word:"SQL", hints:["Base", "Datos"]}, {cat:"Ing. Sistemas", word:"PHP", hints:["Servidor", "Web"]},
+            {cat:"Ing. Sistemas", word:"React", hints:["Componentes", "Facebook"]}, {cat:"Ing. Sistemas", word:"Node.js", hints:["Servidor", "JavaScript"]},
+            {cat:"Ing. Sistemas", word:"Git", hints:["Versión", "Control"]}, {cat:"Ing. Sistemas", word:"API", hints:["Interfaz", "Comunicación"]},
+            {cat:"Ing. Sistemas", word:"Bug", hints:["Error", "Insecto"]}, {cat:"Ing. Sistemas", word:"Debug", hints:["Depurar", "Error"]},
+            {cat:"Ing. Sistemas", word:"Algoritmo", hints:["Paso", "Proceso"]}, {cat:"Ing. Sistemas", word:"Variable", hints:["Cambia", "Dato"]},
+
+            // ARQUITECTURA
+            {cat:"Arquitectura", word:"Plano", hints:["Dibujo", "Diseño"]}, {cat:"Arquitectura", word:"Escalera", hints:["Subir", "Peldaños"]},
+            {cat:"Arquitectura", word:"Ventana", hints:["Vidrio", "Luz"]}, {cat:"Arquitectura", word:"Columna", hints:["Soporte", "Vertical"]},
+            {cat:"Arquitectura", word:"Arco", hints:["Curvo", "Puerta"]}, {cat:"Arquitectura", word:"Cúpula", hints:["Redonda", "Techo"]},
+            {cat:"Arquitectura", word:"Fachada", hints:["Frontal", "Exterior"]}, {cat:"Arquitectura", word:"Balcón", hints:["Exterior", "Vista"]},
+            {cat:"Arquitectura", word:"Azotea", hints:["Techo", "Arriba"]}, {cat:"Arquitectura", word:"Cimientos", hints:["Base", "Fundación"]},
+            {cat:"Arquitectura", word:"Viga", hints:["Soporte", "Horizontal"]}, {cat:"Arquitectura", word:"Muro", hints:["Pared", "Separar"]},
+            {cat:"Arquitectura", word:"Domo", hints:["Cúpula", "Redondo"]}, {cat:"Arquitectura", word:"Atrio", hints:["Patio", "Entrada"]},
+            {cat:"Arquitectura", word:"Nave", hints:["Espacio", "Largo"]}, {cat:"Arquitectura", word:"Pórtico", hints:["Entrada", "Columnas"]},
+
+            // VENEZUELA
+            {cat:"Venezuela", word:"Arepa", hints:["Harina", "Maíz"]}, {cat:"Venezuela", word:"Turpial", hints:["Ave", "Amarillo"]},
+            {cat:"Venezuela", word:"Araguaney", hints:["Árbol", "Amarillo"]}, {cat:"Venezuela", word:"Pabellón", hints:["Plato", "Caraotas"]},
+            {cat:"Venezuela", word:"Hallaca", hints:["Navidad", "Aceitunas"]}, {cat:"Venezuela", word:"Tequeño", hints:["Queso", "Frito"]},
+            {cat:"Venezuela", word:"Cachapa", hints:["Maíz", "Dulce"]}, {cat:"Venezuela", word:"Caracas", hints:["Ciudad", "Las Mercedes"]},
+            {cat:"Venezuela", word:"Chicha", hints:["Bebida", "Arroz"]}, {cat:"Venezuela", word:"Barinas", hints:["Monte", "Burras"]},
+            {cat:"Venezuela", word:"Orinoco", hints:["Río", "Largo"]}, {cat:"Venezuela", word:"Ávila", hints:["Montaña", "Caracas"]},
+            {cat:"Venezuela", word:"Salto Ángel", hints:["Catarata", "Alto"]}, {cat:"Venezuela", word:"Los Roques", hints:["Islas", "Azul"]},
+            {cat:"Venezuela", word:"Simón Bolívar", hints:["Libertad", "Historia"]}, {cat:"Venezuela", word:"Maracaibo", hints:["Ciudad", "Petróleo"]}
         ];
 
         /* --- LÓGICA DEL JUEGO --- */
@@ -886,6 +987,8 @@
         let scoreboardPage = 0;
         const scoreboardPerPage = 3; // 3 rondas por página
         let roundHistory = []; // Historial de rondas: [{word, impostors, category, won}]
+        let selectedCategories = []; // Categorías seleccionadas
+        let filteredDatabase = []; // Base de datos filtrada según categorías
 
         window.onload = () => {
             addPlayerInput(); addPlayerInput(); addPlayerInput(); addPlayerInput();
@@ -954,11 +1057,91 @@
             }
 
             players.forEach(p => { if(!(p in scores)) scores[p] = 0; });
+            showCategoriesScreen();
+        }
+
+        function showCategoriesScreen() {
+            // Obtener todas las categorías únicas de la base de datos
+            const allCategories = [...new Set(database.map(item => item.cat))];
+            
+            // Si no hay categorías seleccionadas, seleccionar todas por defecto
+            if(selectedCategories.length === 0) {
+                selectedCategories = [...allCategories];
+            }
+            
+            const grid = document.getElementById('categories-grid');
+            grid.innerHTML = '';
+            
+            allCategories.forEach(cat => {
+                const isSelected = selectedCategories.includes(cat);
+                const card = document.createElement('div');
+                card.className = `category-card rounded-xl md:rounded-2xl p-4 md:p-5 ${isSelected ? 'selected' : ''}`;
+                card.onclick = () => toggleCategory(cat, card);
+                card.innerHTML = `
+                    <div class="flex items-center justify-between">
+                        <span class="text-white font-bold text-base md:text-lg">${escapeHtml(cat)}</span>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+            
+            showScreen('screen-categories');
+        }
+
+        function toggleCategory(category, cardElement) {
+            const index = selectedCategories.indexOf(category);
+            if(index > -1) {
+                selectedCategories.splice(index, 1);
+                cardElement.classList.remove('selected');
+            } else {
+                selectedCategories.push(category);
+                cardElement.classList.add('selected');
+            }
+        }
+
+        function selectAllCategories() {
+            const allCategories = [...new Set(database.map(item => item.cat))];
+            selectedCategories = [...allCategories];
+            const cards = document.querySelectorAll('.category-card');
+            cards.forEach(card => card.classList.add('selected'));
+        }
+
+        function deselectAllCategories() {
+            selectedCategories = [];
+            const cards = document.querySelectorAll('.category-card');
+            cards.forEach(card => card.classList.remove('selected'));
+        }
+
+        function confirmCategories() {
+            if(selectedCategories.length === 0) {
+                alert('¡Debes seleccionar al menos una categoría!');
+                return;
+            }
+            
+            // Filtrar la base de datos según las categorías seleccionadas
+            filteredDatabase = database.filter(item => selectedCategories.includes(item.cat));
+            
+            // Reiniciar índices usados para la nueva base de datos filtrada
+            usedIndices.clear();
+            
             setupRound();
         }
 
+        function goBackToSetup() {
+            showScreen('screen-setup');
+        }
+
         function setupRound() {
-            const total = database.length;
+            // Usar la base de datos filtrada si existe, sino usar la completa
+            const dbToUse = filteredDatabase.length > 0 ? filteredDatabase : database;
+            const total = dbToUse.length;
+            
+            if(total === 0) {
+                alert('No hay palabras disponibles con las categorías seleccionadas. Por favor selecciona al menos una categoría.');
+                showCategoriesScreen();
+                return;
+            }
+            
             let available = [];
             for(let i = 0; i < total; i++) if(!usedIndices.has(i)) available.push(i);
             if(available.length === 0){
@@ -967,7 +1150,7 @@
             }
             const pick = available[Math.floor(Math.random() * available.length)];
             usedIndices.add(pick);
-            currentRoundData = database[pick];
+            currentRoundData = dbToUse[pick];
             
             currentPlayerNames = [...players];
             let impostorCount = 1;
@@ -1242,3 +1425,5 @@
     </script>
 </body>
 </html>
+
+
