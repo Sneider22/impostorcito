@@ -43,7 +43,7 @@
 
 ### Base de Datos
 
-- Más de 180 palabras organizadas en 10 categorías:
+- Más de 250 palabras organizadas en 12 categorías:
   - Deportes
   - Dibujos
   - Héroes
@@ -54,6 +54,8 @@
   - Ing. Sistemas (lenguajes de programación y términos técnicos)
   - Arquitectura (elementos arquitectónicos)
   - Venezuela (comidas, lugares y símbolos venezolanos)
+  - Medicina (instrumentos, procedimientos y términos médicos)
+  - Famosos (deportistas, actores, músicos, científicos, empresarios y personalidades históricas)
   
 - Cada palabra tiene 2 pistas relacionadas pero no obvias
 - El sistema filtra automáticamente según las categorías seleccionadas
