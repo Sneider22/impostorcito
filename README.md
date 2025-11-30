@@ -6,17 +6,23 @@
 
 1. **Setup**: Los jugadores se registran y se define el número de impostores (1 o más).
 
-2. **Asignación de Roles**: 
-   - Se selecciona una palabra aleatoria de la base de datos
+2. **Selección de Categorías**: 
+   - Se muestra una pantalla para elegir las categorías que se jugarán
+   - Por defecto todas las categorías están seleccionadas
+   - Se puede seleccionar/deseleccionar individualmente o todas a la vez
+   - El juego solo usará palabras de las categorías seleccionadas
+
+3. **Asignación de Roles**: 
+   - Se selecciona una palabra aleatoria de las categorías elegidas
    - Se eligen aleatoriamente los impostores según la cantidad configurada
    - Los jugadores inocentes ven la palabra secreta
    - Los impostores ven una pista relacionada (diferente para cada impostor si hay múltiples)
 
-3. **Revelación**: Cada jugador ve su carta individualmente (palabra o pista según su rol).
+4. **Revelación**: Cada jugador ve su carta individualmente (palabra o pista según su rol).
 
-4. **Votación**: Después de que todos ven sus cartas, se revela la categoría y los jugadores votan quién es el impostor.
+5. **Votación**: Después de que todos ven sus cartas, se revela la categoría y los jugadores votan quién es el impostor.
 
-5. **Resultado**: 
+6. **Resultado**: 
    - Si el impostor gana: +1 punto a cada impostor
    - Si el impostor pierde: nadie suma puntos
 
@@ -37,13 +43,18 @@
 
 ### Base de Datos
 
-- Más de 130 palabras organizadas en categorías:
+- Más de 180 palabras organizadas en 10 categorías:
   - Deportes
   - Dibujos
   - Héroes
   - Villanos/Terror
   - Comidas
-  - Lugares
+  - Lugar
   - Tech/Casa
+  - Ing. Sistemas (lenguajes de programación y términos técnicos)
+  - Arquitectura (elementos arquitectónicos)
+  - Venezuela (comidas, lugares y símbolos venezolanos)
+  
 - Cada palabra tiene 2 pistas relacionadas pero no obvias
+- El sistema filtra automáticamente según las categorías seleccionadas
 
