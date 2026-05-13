@@ -62,6 +62,8 @@
     * Venezuela (comidas, lugares y símbolos venezolanos) 🇻🇪
     * Medicina (instrumentos, procedimientos y términos médicos) ⚕️
     * Famosos (deportistas, actores, músicos, científicos, empresarios y personalidades históricas) ⭐
+ 
+### NOTAS
       
 * Cada palabra tiene **2 pistas relacionadas pero no obvias**
 * El sistema filtra automáticamente según las categorías seleccionadas
