@@ -1,12 +1,12 @@
 # 🕵️ El Impostorcito - Versión 3.0
 
-## 🌟 ¡Bienvenido a El Impostorcito!
+## ¡Bienvenido a El Impostorcito!
 
 **El Impostorcito** es un emocionante juego de deducción social donde los jugadores Inocentes deben descubrir al Impostor, mientras que el Impostor debe adivinar la palabra secreta. Esta versión trae más de **250 palabras** nuevas, un sistema de pistas mejorado y un historial detallado para llevar la cuenta de tus victorias y derrotas. ¿Estás listo para poner a prueba tu astucia y engaño?
 
 ---
 
-## 🧠 Lógica del Juego
+## Lógica del Juego
 
 ### ➡️ Flujo Principal
 
