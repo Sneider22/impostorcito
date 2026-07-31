@@ -2,8 +2,8 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>El IMPOSTORCITO — versión 3.0</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El gran impostor</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@300;400;600;800&family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
@@ -26,14 +26,14 @@
         }
 
         html, body {
-            height: 100%;
+            min-height: 100%;
             overflow-x: hidden;
             position: relative;
         }
 
         body {
             font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            background: #0a0a0f;
+            background: var(--bg-1);
             color: var(--muted);
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
@@ -49,7 +49,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: 
+            background:
                 radial-gradient(circle at 20% 30%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
                 radial-gradient(circle at 80% 70%, rgba(236, 72, 153, 0.15) 0%, transparent 50%),
                 radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.1) 0%, transparent 70%);
@@ -71,7 +71,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: 
+            background-image:
                 radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,0.1), transparent),
                 radial-gradient(2px 2px at 60% 70%, rgba(139,92,246,0.1), transparent),
                 radial-gradient(1px 1px at 50% 50%, rgba(236,72,153,0.1), transparent),
@@ -88,8 +88,8 @@
         }
 
         /* Game brand font */
-        h1, .game-font { 
-            font-family: 'Orbitron', 'Poppins', sans-serif; 
+        h1, .game-font {
+            font-family: 'Orbitron', 'Poppins', sans-serif;
             font-weight: 900;
         }
 
@@ -100,7 +100,7 @@
             overflow: hidden;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             border: 2px solid rgba(255,255,255,0.2);
-            box-shadow: 
+            box-shadow:
                 0 10px 40px rgba(139, 92, 246, 0.4),
                 0 0 30px rgba(217, 70, 239, 0.3),
                 inset 0 1px 0 rgba(255,255,255,0.2);
@@ -126,7 +126,7 @@
 
         .btn-neon:hover {
             transform: translateY(-3px) scale(1.02);
-            box-shadow: 
+            box-shadow:
                 0 20px 60px rgba(139, 92, 246, 0.5),
                 0 0 40px rgba(217, 70, 239, 0.4),
                 inset 0 1px 0 rgba(255,255,255,0.3);
@@ -139,7 +139,7 @@
         .btn-primary {
             background: linear-gradient(135deg, #10b981 0%, #059669 100%);
             border: 2px solid rgba(255,255,255,0.2);
-            box-shadow: 
+            box-shadow:
                 0 10px 40px rgba(16, 185, 129, 0.4),
                 inset 0 1px 0 rgba(255,255,255,0.2);
             transition: all 0.4s ease;
@@ -149,7 +149,7 @@
 
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 
+            box-shadow:
                 0 20px 60px rgba(16, 185, 129, 0.5),
                 inset 0 1px 0 rgba(255,255,255,0.3);
         }
@@ -181,7 +181,7 @@
         .btn-danger {
             background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
             border: 2px solid rgba(255,255,255,0.2);
-            box-shadow: 
+            box-shadow:
                 0 10px 40px rgba(239, 68, 68, 0.4),
                 inset 0 1px 0 rgba(255,255,255,0.2);
             transition: all 0.4s ease;
@@ -190,7 +190,7 @@
 
         .btn-danger:hover {
             transform: translateY(-3px);
-            box-shadow: 
+            box-shadow:
                 0 20px 60px rgba(239, 68, 68, 0.5),
                 inset 0 1px 0 rgba(255,255,255,0.3);
         }
@@ -205,7 +205,7 @@
             backdrop-filter: blur(20px) saturate(200%);
             -webkit-backdrop-filter: blur(20px) saturate(200%);
             border: 2px solid rgba(255, 255, 255, 0.15);
-            box-shadow: 
+            box-shadow:
                 0 25px 80px rgba(2,6,23,0.8),
                 inset 0 1px 0 rgba(255,255,255,0.15),
                 inset 0 -1px 0 rgba(0,0,0,0.2);
@@ -221,19 +221,61 @@
         .input-field:focus {
             border-color: var(--pink);
             outline: none;
-            box-shadow: 
+            box-shadow:
                 0 0 0 4px rgba(236, 72, 153, 0.15),
                 0 10px 30px rgba(236, 72, 153, 0.2);
             background: rgba(0, 0, 0, 0.7);
-            transform: scale(1.02);
+            transform: scale(1.01);
         }
 
-        .hidden-screen { 
-            display: none !important; 
+        @media (max-width: 480px) {
+            .input-field:focus {
+                transform: none;
+                box-shadow:
+                    0 0 0 3px rgba(236, 72, 153, 0.18),
+                    0 0 20px rgba(236, 72, 153, 0.15);
+            }
         }
 
-        .animate-enter { 
-            animation: fadeInUp 0.6s cubic-bezier(0.2, 0, 0.2, 1) both; 
+        .hidden-screen {
+            display: none !important;
+        }
+
+        /* Altura de pantallas: fixed = ocupa el viewport exacto (con scroll interno),
+           grow = mínimo el viewport pero puede crecer y hacer scroll en la página */
+        .screen-fixed {
+            height: 100vh;
+            height: 100dvh;
+        }
+
+        .screen-grow {
+            min-height: 100vh;
+            min-height: 100dvh;
+        }
+
+        button:disabled {
+            opacity: 0.4;
+            pointer-events: none;
+        }
+
+        :focus-visible {
+            outline: 2px solid var(--pink);
+            outline-offset: 2px;
+        }
+
+        .hints-checkbox:focus-visible ~ .toggle-switch {
+            box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.5);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+
+        .animate-enter {
+            animation: fadeInUp 0.6s cubic-bezier(0.2, 0, 0.2, 1) both;
         }
 
         @keyframes fadeInUp {
@@ -248,7 +290,7 @@
         }
 
         .role-impostor {
-            text-shadow: 
+            text-shadow:
                 0 0 40px rgba(239,68,68,1),
                 0 0 80px rgba(239,68,68,0.6),
                 0 0 120px rgba(239,68,68,0.3);
@@ -257,18 +299,18 @@
         }
 
         @keyframes pulse-glow-intense {
-            0%, 100% { 
-                opacity: 1; 
+            0%, 100% {
+                opacity: 1;
                 filter: brightness(1);
             }
-            50% { 
-                opacity: 0.9; 
+            50% {
+                opacity: 0.9;
                 filter: brightness(1.2);
             }
         }
 
         .role-innocent {
-            text-shadow: 
+            text-shadow:
                 0 0 30px rgba(56,189,248,0.9),
                 0 0 60px rgba(56,189,248,0.5),
                 0 0 90px rgba(56,189,248,0.3);
@@ -294,12 +336,6 @@
         button, .player-input {
             touch-action: manipulation;
             min-height: 44px;
-        }
-        
-        @media (max-width: 480px) {
-            button, .player-input {
-                min-height: 44px;
-            }
         }
 
         #role-card {
@@ -373,7 +409,7 @@
             align-items: center;
             justify-content: center;
         }
-        
+
         @media (min-width: 481px) {
             .players-bar .quick-add {
                 min-height: 52px;
@@ -528,6 +564,12 @@
             .text-6xl {
                 font-size: 3rem !important;
             }
+            .text-5xl {
+                font-size: 2.75rem !important;
+            }
+            .text-xl {
+                font-size: 1.25rem !important;
+            }
             /* Categoría más pequeña */
             #final-category {
                 font-size: 1.5rem !important;
@@ -606,12 +648,60 @@
         }
 
         @keyframes hintPulse {
-            0%, 100% { 
+            0%, 100% {
                 box-shadow: 0 10px 40px rgba(239, 68, 68, 0.3);
             }
-            50% { 
+            50% {
                 box-shadow: 0 15px 50px rgba(239, 68, 68, 0.5);
             }
+        }
+
+        /* Hints Toggle Switch */
+        .hints-toggle {
+            position: relative;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .hints-checkbox {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .toggle-switch {
+            width: 52px;
+            height: 28px;
+            background: rgba(100, 116, 139, 0.4);
+            border-radius: 9999px;
+            position: relative;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .toggle-switch::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 3px;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            background: white;
+            border-radius: 50%;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+        }
+
+        .hints-checkbox:checked ~ .toggle-switch {
+            background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+            border-color: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 0 16px rgba(236, 72, 153, 0.4);
+        }
+
+        .hints-checkbox:checked ~ .toggle-switch::after {
+            left: calc(100% - 23px);
         }
 
         /* Category badge */
@@ -662,15 +752,15 @@
         }
     </style>
 </head>
-<body class="h-screen flex flex-col items-center justify-center overflow-hidden">
+<body class="flex flex-col items-center">
 
     <!-- PANTALLA 1: SETUP -->
-    <div id="screen-setup" class="w-full flex flex-col h-full py-3 md:py-6 animate-enter app-shell">
+    <div id="screen-setup" class="screen screen-fixed w-full flex flex-col py-3 md:py-6 animate-enter app-shell">
         <div class="text-center mb-4 md:mb-8">
             <h1 class="text-4xl md:text-7xl font-black title-gradient tracking-wider mb-2 md:mb-3 break-words">
-                El Impostorcito
+                El gran impostor
             </h1>
-            <p class="text-slate-400 text-xs md:text-base tracking-[0.3em] md:tracking-[0.4em] uppercase font-bold mt-1 md:mt-2">Versión 3.0</p>
+            <p class="text-slate-400 text-xs md:text-base tracking-[0.3em] md:tracking-[0.4em] uppercase font-bold mt-1 md:mt-2">Versión 1.1</p>
         </div>
 
         <div class="glass-panel flex-1 rounded-2xl md:rounded-3xl p-4 md:p-8 overflow-hidden flex flex-col shadow-2xl">
@@ -685,16 +775,26 @@
                 </div>
             </div>
 
-            <div id="players-list" class="overflow-y-auto flex-1 space-y-2 md:space-y-4 pr-2 md:pr-3 mb-3 md:mb-5 custom-scrollbar">
+            <div id="players-list" class="overflow-y-auto flex-1 space-y-2 md:space-y-4 px-2 md:px-3 py-2 md:py-3 mb-3 md:mb-5 custom-scrollbar">
                 <!-- Inputs dinámicos -->
             </div>
 
             <div class="mt-3 md:mt-5">
                 <div class="players-bar">
                     <input id="quick-player-name" type="text" placeholder="Nuevo jugador..." class="quick-input player-input p-3 md:p-5 rounded-xl md:rounded-2xl text-white input-field placeholder-slate-500 font-bold text-sm md:text-lg" />
-                    <button onclick="addQuickPlayer()" class="quick-add btn-primary text-white rounded-xl md:rounded-2xl shadow-xl text-xl md:text-2xl font-bold w-12 md:w-14 h-12 md:h-14 flex items-center justify-center p-0">
+                    <button onclick="addQuickPlayer()" aria-label="Agregar jugador" class="quick-add btn-primary text-white rounded-xl md:rounded-2xl shadow-xl text-xl md:text-2xl font-bold w-12 md:w-14 h-12 md:h-14 flex items-center justify-center p-0">
                         ➕
                     </button>
+                </div>
+                <div class="mt-3 md:mt-4">
+                    <label for="show-hints" class="hints-toggle flex items-center justify-between gap-3 p-3 md:p-4 rounded-xl md:rounded-2xl cursor-pointer bg-black/40 border-2 border-white/10 hover:border-purple-500/40 transition-all">
+                        <span class="flex items-center gap-2 md:gap-3 text-white font-bold text-sm md:text-base">
+                            <span class="text-xl md:text-2xl">🔍</span>
+                            <span>Mostrar pistas al impostor</span>
+                        </span>
+                        <input id="show-hints" type="checkbox" checked class="hints-checkbox" />
+                        <span class="toggle-switch"></span>
+                    </label>
                 </div>
                 <div class="mt-2 md:mt-4 flex justify-end">
                     <button onclick="resetScores()" class="text-xs md:text-sm text-slate-400 hover:text-white transition-colors font-semibold">
@@ -709,16 +809,16 @@
                 🎮 ¡INICIAR PARTIDA!
             </button>
         </div>
-        
+
         <div class="mt-4 md:mt-6 text-center">
             <p class="text-slate-500 text-xs md:text-sm font-medium opacity-70">
-                © Sneider, Nicol y Raiber 
+                Atribución original: © Sneider, Nicol y Raiber. Modificado por Otto, Johanna y Claude
             </p>
         </div>
     </div>
 
     <!-- PANTALLA 2: SELECCIÓN DE CATEGORÍAS -->
-    <div id="screen-categories" class="hidden-screen w-full flex flex-col h-full py-4 md:py-6 animate-enter app-shell">
+    <div id="screen-categories" class="screen screen-fixed hidden-screen w-full flex flex-col py-4 md:py-6 animate-enter app-shell">
         <div class="text-center mb-6 md:mb-8">
             <h1 class="text-3xl md:text-5xl font-black title-gradient tracking-wider mb-2 md:mb-3">
                 Elige las Categorías
@@ -749,33 +849,33 @@
     </div>
 
     <!-- PANTALLA 3: PASE -->
-    <div id="screen-pass" class="hidden-screen w-full text-center animate-enter h-full flex flex-col justify-center app-shell px-4 md:px-6">
+    <div id="screen-pass" class="screen screen-grow hidden-screen w-full text-center animate-enter flex flex-col justify-center app-shell px-4 md:px-6">
         <div class="mb-6 md:mb-16 relative group">
             <div class="absolute inset-0 bg-pink-600 blur-[60px] md:blur-[80px] opacity-30 group-hover:opacity-40 transition-opacity"></div>
-            <div class="relative w-24 h-24 md:w-40 md:h-40 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-full flex items-center justify-center mx-auto border-3 md:border-4 border-slate-700 shadow-2xl">
+            <div class="relative w-24 h-24 md:w-40 md:h-40 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-full flex items-center justify-center mx-auto border-4 border-slate-700 shadow-2xl">
                 <span class="text-5xl md:text-8xl icon-bounce">🤫</span>
             </div>
         </div>
-        
+
         <p class="text-slate-400 text-xs md:text-lg uppercase tracking-[0.3em] md:tracking-[0.4em] mb-3 md:mb-5 font-bold">Dale el móvil a</p>
         <h1 id="current-player-name" class="text-2xl md:text-7xl font-black text-white mb-6 md:mb-16 game-font break-words leading-tight drop-shadow-2xl title-gradient">NOMBRE</h1>
-        
-        <button onclick="revealRole()" class="btn-secondary text-white w-full py-4 md:py-7 rounded-2xl md:rounded-3xl text-base md:text-2xl font-black shadow-2xl">
+
+        <button onclick="revealRole()" id="btn-reveal" class="btn-secondary text-white w-full py-4 md:py-7 rounded-2xl md:rounded-3xl text-base md:text-2xl font-black shadow-2xl">
             👁️ VER MI CARTA
         </button>
     </div>
 
-    <!-- PANTALLA 3: REVELACIÓN -->
-    <div id="screen-reveal" class="hidden-screen w-full animate-enter h-full flex flex-col justify-center app-shell px-4 md:px-6">
-        
+    <!-- PANTALLA 4: REVELACIÓN -->
+    <div id="screen-reveal" class="screen screen-grow hidden-screen w-full animate-enter flex flex-col justify-center app-shell px-4 md:px-6">
+
         <div id="role-card" class="glass-panel p-4 md:p-10 rounded-2xl md:rounded-3xl mb-4 md:mb-8 relative overflow-hidden min-h-[320px] md:min-h-[450px] flex flex-col justify-center items-center border-2 shadow-2xl">
-            
+
             <div class="mb-4 md:mb-8 transform hover:scale-110 transition-transform duration-500">
                 <span id="role-icon" class="text-5xl md:text-9xl drop-shadow-2xl block"></span>
             </div>
 
             <h2 id="role-title" class="text-xs md:text-base font-black mb-3 md:mb-6 tracking-[0.3em] md:tracking-[0.5em] uppercase opacity-80">OBJETIVO</h2>
-            
+
             <div id="word-container" class="w-full relative z-10 text-center px-2 md:px-4">
                 <h1 id="secret-word" class="text-2xl md:text-6xl font-black uppercase break-words leading-tight mb-2 md:mb-4 filter drop-shadow-2xl">PALABRA</h1>
             </div>
@@ -787,7 +887,7 @@
                 <p id="impostor-hint" class="text-lg md:text-3xl text-white font-black font-mono tracking-wider text-center break-words"></p>
             </div>
 
-            <p class="mt-4 md:mt-10 text-xs text-slate-400 uppercase tracking-wider text-center font-bold">Memoriza rápido y borra</p>
+            <p class="mt-4 md:mt-10 text-xs text-slate-400 uppercase tracking-wider text-center font-bold">Memoriza tu carta y pasa el móvil</p>
         </div>
 
         <button onclick="nextTurn()" class="btn-primary text-white w-full py-4 md:py-6 rounded-2xl md:rounded-3xl text-base md:text-2xl font-black shadow-2xl">
@@ -795,8 +895,8 @@
         </button>
     </div>
 
-    <!-- PANTALLA 4: VOTACIÓN -->
-    <div id="screen-vote" class="hidden-screen w-full text-center animate-enter h-full flex flex-col justify-center app-shell px-4 md:px-6 overflow-y-auto">
+    <!-- PANTALLA 5: VOTACIÓN -->
+    <div id="screen-vote" class="screen screen-grow hidden-screen w-full text-center animate-enter flex flex-col justify-center app-shell px-4 md:px-6">
         <div class="mb-4 md:mb-10">
             <span class="text-5xl md:text-8xl animate-bounce inline-block drop-shadow-2xl">🔥</span>
         </div>
@@ -823,6 +923,8 @@
             </div>
         </div>
 
+        <p id="round-result-msg" class="hidden mb-3 md:mb-4 text-sm md:text-lg text-white font-bold bg-white/10 rounded-xl md:rounded-2xl py-3 px-4 border-2 border-white/10"></p>
+
         <div id="final-scoreboard" class="hidden mb-4 md:mb-8 text-sm md:text-base">
             <!-- dinámico: ranking -->
         </div>
@@ -831,12 +933,16 @@
             <button onclick="showSpoiler()" id="btn-spoiler" class="btn-secondary text-white w-full py-4 md:py-5 rounded-xl md:rounded-2xl font-black text-sm md:text-lg border-2 shadow-xl">
                 🔓 VER RESULTADO
             </button>
-            <div id="result-controls" class="hidden mt-3 md:mt-4 space-y-3 md:space-y-4">
-                <div class="flex gap-3 md:gap-4">
-                    <button onclick="awardImpostorPoint()" id="btn-impostor-win" class="btn-danger w-1/2 py-4 md:py-5 rounded-xl md:rounded-2xl text-white font-black text-xs md:text-base shadow-xl">
-                        😈 Impostor (+1)
+            <div id="result-controls" class="hidden mt-3 md:mt-4 space-y-2 md:space-y-3">
+                <p class="text-xs text-slate-400 uppercase tracking-widest font-black">¿Quién ganó la ronda? (+1 punto)</p>
+                <div class="grid grid-cols-3 gap-2 md:gap-3">
+                    <button onclick="awardImpostorPoint()" class="btn-danger py-4 md:py-5 rounded-xl md:rounded-2xl text-white font-black text-xs md:text-base shadow-xl">
+                        😈 Impostor
                     </button>
-                    <button onclick="noPointsThisRound()" id="btn-no-points" class="btn-secondary w-1/2 py-4 md:py-5 rounded-xl md:rounded-2xl text-white font-black text-xs md:text-base shadow-xl">
+                    <button onclick="awardInnocentsPoint()" class="btn-primary py-4 md:py-5 rounded-xl md:rounded-2xl text-white font-black text-xs md:text-base shadow-xl">
+                        😇 Inocentes
+                    </button>
+                    <button onclick="noPointsThisRound()" class="btn-secondary py-4 md:py-5 rounded-xl md:rounded-2xl text-white font-black text-xs md:text-base shadow-xl">
                         ⚪ Nadie
                     </button>
                 </div>
@@ -847,14 +953,11 @@
             <button onclick="goToSetup()" class="btn-neon w-full py-4 md:py-5 rounded-xl md:rounded-2xl text-sm md:text-xl font-black text-white uppercase tracking-wider shadow-2xl">
                 🏠 Regresar al inicio
             </button>
-            <button onclick="fullReset()" class="text-slate-500 text-xs md:text-sm py-2 md:py-3 hover:text-white transition-colors font-semibold">
-                🔄 Cambiar Jugadores
-            </button>
         </div>
-        
+
         <div class="mt-4 md:mt-6 text-center pb-2">
             <p class="text-slate-500 text-xs md:text-sm font-medium opacity-70">
-                © Sneider, Nicol y Raiber
+                Modificado con ❤️ por Otto y Johanna. Atribución original: © Sneider, Nicol y Raiber
             </p>
         </div>
     </div>
@@ -868,149 +971,343 @@
             {cat:"Deporte", word:"Baloncesto", hints:["Anaranjado", "Aro"]}, {cat:"Deporte", word:"Béisbol", hints:["Bases", "Diamante"]},
             {cat:"Deporte", word:"Fórmula 1", hints:["Circuito", "Velocidad"]}, {cat:"Deporte", word:"Boxeo", hints:["Guantes", "Round"]},
             {cat:"Deporte", word:"Natación", hints:["Tabla", "Piscina"]}, {cat:"Deporte", word:"Surf", hints:["Tabla", "Ola"]},
-            {cat:"Deporte", word:"Golf", hints:["Palo", "Campo"]}, 
+            {cat:"Deporte", word:"Golf", hints:["Palo", "Campo"]},
             {cat:"Deporte", word:"Karate", hints:["Cinturon", "Tabla"]}, {cat:"Deporte", word:"Gimnasio", hints:["Máquinas", "Pesas"]},
             {cat:"Deporte", word:"Ciclismo", hints:["Velocidad", "Manubrio"]}, {cat:"Deporte", word:"Atletismo", hints:["Pista", "Carrera"]},
             {cat:"Deporte", word:"Hockey", hints:["Disco", "Palo"]}, {cat:"Deporte", word:"Esquí", hints:["Frio", "Montaña"]},
-            {cat:"Deporte", word:"Bádminton", hints:["Pluma", "Red"]}, {cat:"Deporte", word:"Ping Pong", hints:["Mesa", "Paleta"]},
             {cat:"Deporte", word:"Arquería", hints:["Flecha", "Arco"]}, {cat:"Deporte", word:"Escalada", hints:["Cuerda", "Roca"]},
 
-            // DIBUJOS
-            {cat:"Dibujos", word:"Peppa Pig", hints:["Rosa", "Dinosaurio"]}, {cat:"Dibujos", word:"Bob Esponja", hints:["Amarillo", "Estrella"]},
-            {cat:"Dibujos", word:"Mickey Mouse", hints:["Casa", "Orejas"]}, {cat:"Dibujos", word:"El Increíble Mundo de Gumball ", hints:["Gato", "Pez"]},
-            {cat:"Dibujos", word:"Pikachu", hints:["Ratón", "Amarillo"]}, {cat:"Dibujos", word:"Goku", hints:["Esferas", "Colores"]},
-            {cat:"Dibujos", word:"Shrek", hints:["Cuentos", "Dragón"]}, {cat:"Dibujos", word:"Buzz Lightyear", hints:["Infinito", "Espacio"]},
-            {cat:"Dibujos", word:"Minions", hints:["Amarillo", "Bananas"]}, {cat:"Dibujos", word:"Frozen", hints:["Zanahoria", "Hermanas"]},
-            {cat:"Dibujos", word:"Moana", hints:["Océano", "Isla"]}, {cat:"Dibujos", word:"Coco", hints:["Música", "Familia"]},
-            {cat:"Dibujos", word:"Toy Story", hints:["Infinito", "Vaquero"]}, {cat:"Dibujos", word:"Cars", hints:["Copa", "Carreras"]},
-            {cat:"Dibujos", word:"Nemo", hints:["Payaso", "Buscar"]}, {cat:"Dibujos", word:"Simba", hints:["Rey", "Selva"]},
-            {cat:"Dibujos", word:"Ariel", hints:["Cangrejo", "Poseidon"]}, {cat:"Dibujos", word:"Barbie", hints:["Rosado", "Profesiones"]},
-            {cat:"Dibujos", word:"Gravity Falls", hints:["Libros", "Verano"]}, {cat:"Dibujos", word:"Un Show Mas", hints:["Jefe", "Parque"]},
-            // HÉROES
-            {cat:"Héroe", word:"Superman", hints:["Extraterrestre", "Laser"]}, {cat:"Héroe", word:"Batman", hints:["Negro", "Noche"]},
-            {cat:"Héroe", word:"Iron Man", hints:["Millonario", "Filantropía"]}, {cat:"Héroe", word:"Spiderman", hints:["Casa", "Tío"]},
-            {cat:"Héroe", word:"Capitán América", hints:["Vengador", "Estrella"]}, {cat:"Héroe", word:"Thor", hints:["Dios", "Rayo"]},
-            {cat:"Héroe", word:"Hulk", hints:["Fuerza", "Verde"]}, {cat:"Héroe", word:"Pantera Negra", hints:["Tribu", "Negro"]},
-            {cat:"Héroe", word:"Flash", hints:["Rayo", "Rojo"]}, {cat:"Héroe", word:"Wonder Woman", hints:["Isla", "Lazo"]},
-            {cat:"Héroe", word:"Wolverine", hints:["Amarillo", "Metal"]}, {cat:"Héroe", word:"Deadpool", hints:["Cancer", "Rojo"]},
-            {cat:"Héroe", word:"Aquaman", hints:["Rey", "Océano"]}, {cat:"Héroe", word:"Dr. Strange", hints:["Tiempo", "Portales"]},
-            {cat:"Héroe", word:"Black Widow", hints:["Espía", "Agente"]}, {cat:"Héroe", word:"Ant-Man", hints:["Enorme", "Civil War"]},
+            // ANIMALES
+            {cat:"Animales", word:"Perro", hints:["Ladra", "Fiel"]}, {cat:"Animales", word:"Gato", hints:["Maúlla", "Bigotes"]},
+            {cat:"Animales", word:"Elefante", hints:["Trompa", "Grande"]}, {cat:"Animales", word:"León", hints:["Melena", "Rey"]},
+            {cat:"Animales", word:"Delfín", hints:["Mar", "Inteligente"]}, {cat:"Animales", word:"Águila", hints:["Vuela", "Garras"]},
+            {cat:"Animales", word:"Serpiente", hints:["Escamas", "Veneno"]}, {cat:"Animales", word:"Caballo", hints:["Galope", "Herradura"]},
+            {cat:"Animales", word:"Tiburón", hints:["Aleta", "Océano"]}, {cat:"Animales", word:"Tortuga", hints:["Caparazón", "Lenta"]},
+            {cat:"Animales", word:"Mono", hints:["Banana", "Árbol"]}, {cat:"Animales", word:"Loro", hints:["Habla", "Colores"]},
+            {cat:"Animales", word:"Oso", hints:["Hibernar", "Garras"]}, {cat:"Animales", word:"Conejo", hints:["Zanahoria", "Orejas"]},
+            {cat:"Animales", word:"Pingüino", hints:["Hielo", "Blanco y negro"]}, {cat:"Animales", word:"Cocodrilo", hints:["Pantano", "Mandíbula"]},
+            {cat:"Animales", word:"Jirafa", hints:["Cuello", "Alta"]}, {cat:"Animales", word:"Búho", hints:["Nocturno", "Sabio"]},
+            {cat:"Animales", word:"Ballena", hints:["Gigante", "Profundo"]}, {cat:"Animales", word:"Mariposa", hints:["Alas", "Colores"]},
 
-            // VILLANOS & TERROR
-            {cat:"Villano/Terror", word:"Thanos", hints:["Infinito", "Gemas"]}, {cat:"Villano/Terror", word:"Joker", hints:["Comodín", "Bufón"]},
-            {cat:"Villano/Terror", word:"Darth Vader", hints:["Oscuro", "Padre"]}, {cat:"Villano/Terror", word:"Voldemort", hints:["Serpiente", "Nariz"]},
-            {cat:"Villano/Terror", word:"Chucky", hints:["Ritual", "Muñeco"]}, {cat:"Villano/Terror", word:"Freddy Krueger", hints:["Dedos", "Pesadilla"]},
-            {cat:"Villano/Terror", word:"It (Pennywise)", hints:["Transformaciones", "Cloacas"]}, {cat:"Villano/Terror", word:"Drácula", hints:["Noche", "Sangre"]},
-            {cat:"Villano/Terror", word:"Zombi", hints:["Muerto", "Cerebros"]}, {cat:"Villano/Terror", word:"Fantasma", hints:["Invisible", "Sábana"]},
-            {cat:"Villano/Terror", word:"Jason", hints:["Viernes", "Machete"]}, {cat:"Villano/Terror", word:"Michael Myers", hints:["Cuchillo", "Máscara"]},
-            {cat:"Villano/Terror", word:"Hannibal", hints:["Doctor", "Comida"]}, {cat:"Villano/Terror", word:"Loki", hints:["Trucos", "Dios"]},
+            // COSAS
+            {cat:"Cosas", word:"Teléfono", hints:["Pantalla", "Llamada"]}, {cat:"Cosas", word:"Silla", hints:["Sentarse", "Patas"]},
+            {cat:"Cosas", word:"Espejo", hints:["Reflejo", "Vidrio"]}, {cat:"Cosas", word:"Reloj", hints:["Hora", "Agujas"]},
+            {cat:"Cosas", word:"Llave", hints:["Puerta", "Metal"]}, {cat:"Cosas", word:"Lámpara", hints:["Luz", "Mesa"]},
+            {cat:"Cosas", word:"Paraguas", hints:["Lluvia", "Abrir"]}, {cat:"Cosas", word:"Tijeras", hints:["Cortar", "Filo"]},
+            {cat:"Cosas", word:"Cuchara", hints:["Sopa", "Metal"]}, {cat:"Cosas", word:"Almohada", hints:["Dormir", "Suave"]},
+            {cat:"Cosas", word:"Televisor", hints:["Canal", "Control"]}, {cat:"Cosas", word:"Bicicleta", hints:["Pedales", "Ruedas"]},
+            {cat:"Cosas", word:"Guitarra", hints:["Cuerdas", "Música"]}, {cat:"Cosas", word:"Libro", hints:["Páginas", "Leer"]},
+            {cat:"Cosas", word:"Gafas", hints:["Lentes", "Ver"]}, {cat:"Cosas", word:"Maleta", hints:["Viaje", "Equipaje"]},
+            {cat:"Cosas", word:"Vela", hints:["Fuego", "Cera"]}, {cat:"Cosas", word:"Escalera", hints:["Subir", "Peldaños"]},
+            {cat:"Cosas", word:"Computador", hints:["Teclado", "Pantalla"]}, {cat:"Cosas", word:"Cámara", hints:["Foto", "Lente"]},
 
-            // COMIDAS
-            {cat:"Comida", word:"Sushi", hints:["Japón", "Pescado"]}, {cat:"Comida", word:"Pizza", hints:["Hawai", "Queso"]},
-            {cat:"Comida", word:"Hamburguesa", hints:["Carne", "Pan"]}, {cat:"Comida", word:"Tacos", hints:["Variedad", "Tortilla"]},
-            {cat:"Comida", word:"Arepa", hints:["Harina", "Maíz"]}, {cat:"Comida", word:"Empanada", hints:["Relleno", "Masa"]},
-            {cat:"Comida", word:"Ceviche", hints:["Mar", "Limón"]}, {cat:"Comida", word:"Lasagna", hints:["Italiana", "Capas"]},
-            {cat:"Comida", word:"Salchipapa", hints:["Fritas", "Salsas"]}, {cat:"Comida", word:"Burrito", hints:["Envuelto", "Tortilla"]},
-            {cat:"Comida", word:"Pollo Frito", hints:["Crujiente", "Aceite"]}, {cat:"Comida", word:"Sopa", hints:["Líquido", "Cuchara"]},
-            {cat:"Comida", word:"Pastel", hints:["Dulce", "Cumpleaños"]}, {cat:"Comida", word:"Donas", hints:["Redondo", "Azucar"]},
-            {cat:"Comida", word:"Hot Dog", hints:["Barato", "Salchicha"]}, {cat:"Comida", word:"Chocolate", hints:["Dulce", "Cacao"]},
-            {cat:"Comida", word:"Helado", hints:["Frío", "Cono"]}, {cat:"Comida", word:"Palomitas", hints:["Maíz", "Pijamada"]},
-            {cat:"Comida", word:"Pancakes", hints:["Desayuno", "Miel"]}, {cat:"Comida", word:"Pasta", hints:["Largo", "Carne"]},
-            {cat:"Comida", word:"Ramen", hints:["Sopa", "Corea"]}, {cat:"Comida", word:"Paella", hints:["Arroz", "Mariscos"]},
-            {cat:"Comida", word:"Sándwich", hints:["Pan", "Lechuga"]}, {cat:"Comida", word:"Alitas", hints:["Picante", "Pollo"]},
-            {cat:"Comida", word:"Nachos", hints:["Queso", "Tortilla"]}, {cat:"Comida", word:"Tiramisú", hints:["Postre", "Café"]},
+            // COMIDAS COLOMBIANAS
+            {cat:"Comidas Colombianas", word:"Bandeja Paisa", hints:["Frijol", "Chicharrón"]}, {cat:"Comidas Colombianas", word:"Arepa", hints:["Maíz", "Redonda"]},
+            {cat:"Comidas Colombianas", word:"Empanada", hints:["Frita", "Rellena"]}, {cat:"Comidas Colombianas", word:"Sancocho", hints:["Sopa", "Gallina"]},
+            {cat:"Comidas Colombianas", word:"Ajiaco", hints:["Bogotá", "Papa"]}, {cat:"Comidas Colombianas", word:"Buñuelo", hints:["Queso", "Bolita"]},
+            {cat:"Comidas Colombianas", word:"Pandebono", hints:["Queso", "Cali"]}, {cat:"Comidas Colombianas", word:"Lechona", hints:["Cerdo", "Tolima"]},
+            {cat:"Comidas Colombianas", word:"Tamal", hints:["Hoja", "Envuelto"]}, {cat:"Comidas Colombianas", word:"Patacón", hints:["Plátano", "Aplastado"]},
+            {cat:"Comidas Colombianas", word:"Changua", hints:["Huevo", "Leche"]}, {cat:"Comidas Colombianas", word:"Obleas", hints:["Arequipe", "Crujiente"]},
+            {cat:"Comidas Colombianas", word:"Mazamorra", hints:["Maíz", "Dulce"]}, {cat:"Comidas Colombianas", word:"Bocadillo", hints:["Guayaba", "Veleño"]},
+            {cat:"Comidas Colombianas", word:"Caldo de Costilla", hints:["Hueso", "Desayuno"]}, {cat:"Comidas Colombianas", word:"Hogao", hints:["Tomate", "Cebolla"]},
+            {cat:"Comidas Colombianas", word:"Chorizo", hints:["Parrilla", "Carne"]}, {cat:"Comidas Colombianas", word:"Morcilla", hints:["Arroz", "Sangre"]},
+            {cat:"Comidas Colombianas", word:"Cocadas", hints:["Coco", "Costa"]}, {cat:"Comidas Colombianas", word:"Aguapanela", hints:["Panela", "Caliente"]},
 
-            // LUGARES
-            {cat:"Lugar", word:"Playa", hints:["Arena", "Estrella"]}, {cat:"Lugar", word:"Río", hints:["Rocas", "Pozo"]},
-            {cat:"Lugar", word:"Montaña", hints:["Alto", "Escalada"]}, {cat:"Lugar", word:"Selva", hints:["Verde", "Árboles"]},
-            {cat:"Lugar", word:"Desierto", hints:["Arena", "Calor"]}, {cat:"Lugar", word:"Cine", hints:["Estrenos", "Pantalla"]},
-            {cat:"Lugar", word:"Discoteca", hints:["Barra", "Baile"]}, {cat:"Lugar", word:"Hospital", hints:["Bienestar", "Insumos"]},
-            {cat:"Lugar", word:"Escuela", hints:["Libros", "Examen"]}, {cat:"Lugar", word:"Cementerio", hints:["Tierra", "Descanso"]},
-            {cat:"Lugar", word:"Aeropuerto", hints:["Boletos", "Vacaciones"]}, {cat:"Lugar", word:"Cárcel", hints:["Rejas", "Sentencia"]},
-            {cat:"Lugar", word:"Parque", hints:["Bancas", "Paseo"]}, {cat:"Lugar", word:"Museo", hints:["Arte", "Historia"]},
-            {cat:"Lugar", word:"Restaurante", hints:["Orden", "Platos"]}, {cat:"Lugar", word:"Hotel", hints:["Vacaciones", "Habitaciones"]},
-            {cat:"Lugar", word:"Biblioteca", hints:["Información", "Estanteria"]}, {cat:"Lugar", word:"Gimnasio", hints:["Superación", "Maquinas"]},
-            {cat:"Lugar", word:"Iglesia", hints:["Bancas", "Adoración"]}, {cat:"Lugar", word:"Estadio", hints:["Deportes", "Gradas"]},
+            // PROFESIONES
+            {cat:"Profesiones", word:"Médico", hints:["Bata", "Estetoscopio"]}, {cat:"Profesiones", word:"Bombero", hints:["Fuego", "Manguera"]},
+            {cat:"Profesiones", word:"Chef", hints:["Cocina", "Gorro"]}, {cat:"Profesiones", word:"Piloto", hints:["Avión", "Cabina"]},
+            {cat:"Profesiones", word:"Policía", hints:["Placa", "Patrulla"]}, {cat:"Profesiones", word:"Profesor", hints:["Clase", "Tablero"]},
+            {cat:"Profesiones", word:"Abogado", hints:["Juicio", "Ley"]}, {cat:"Profesiones", word:"Veterinario", hints:["Animales", "Clínica"]},
+            {cat:"Profesiones", word:"Arquitecto", hints:["Planos", "Edificio"]}, {cat:"Profesiones", word:"Astronauta", hints:["Espacio", "Cohete"]},
+            {cat:"Profesiones", word:"Dentista", hints:["Dientes", "Taladro"]}, {cat:"Profesiones", word:"Mecánico", hints:["Motor", "Taller"]},
+            {cat:"Profesiones", word:"Payaso", hints:["Circo", "Nariz roja"]}, {cat:"Profesiones", word:"Cartero", hints:["Carta", "Buzón"]},
+            {cat:"Profesiones", word:"Peluquero", hints:["Tijeras", "Cabello"]}, {cat:"Profesiones", word:"Fotógrafo", hints:["Cámara", "Lente"]},
+            {cat:"Profesiones", word:"Electricista", hints:["Cable", "Corriente"]}, {cat:"Profesiones", word:"Panadero", hints:["Horno", "Pan"]},
+            {cat:"Profesiones", word:"Enfermero", hints:["Inyección", "Hospital"]}, {cat:"Profesiones", word:"Cantante", hints:["Micrófono", "Voz"]},
 
-            // TECH/CASA
-            {cat:"Tech/Casa", word:"Televisor", hints:["Resolución", "Control"]}, {cat:"Tech/Casa", word:"Audífonos", hints:["Música", "Cable"]},
-            {cat:"Tech/Casa", word:"Aire Acondicionado", hints:["Temperatura", "Frío"]}, {cat:"Tech/Casa", word:"Celular", hints:["Aplicaciones", "Llamada"]},
-            {cat:"Tech/Casa", word:"WiFi", hints:["Internet", "Red"]}, {cat:"Tech/Casa", word:"PlayStation", hints:["Juegos", "Control"]},
-            {cat:"Tech/Casa", word:"Microondas", hints:["Calor", "Comida"]}, {cat:"Tech/Casa", word:"Lavadora", hints:["Agua", "Ciclos"]},
-            {cat:"Tech/Casa", word:"Nevera", hints:["Frío", "Hielo"]}, {cat:"Tech/Casa", word:"Cama", hints:["Descanso", "Pijamada"]},
-            {cat:"Tech/Casa", word:"Poseta", hints:["Teléfono", "Papel"]}, {cat:"Tech/Casa", word:"Espejo", hints:["Reflejo", "Vidrio"]},
-            {cat:"Tech/Casa", word:"Reloj", hints:["Muñeca", "Tiempo"]}, {cat:"Tech/Casa", word:"Laptop", hints:["Desplegable", "Teclado"]},
-            {cat:"Tech/Casa", word:"Tablet", hints:["Táctil", "Pantalla"]}, {cat:"Tech/Casa", word:"Altavoz", hints:["Sonido", "Estruendo"]},
-            {cat:"Tech/Casa", word:"Cámara", hints:["Recuerdos", "Digital"]}, {cat:"Tech/Casa", word:"Impresora", hints:["Papel", "Tinta"]},
-            {cat:"Tech/Casa", word:"Router", hints:["Red", "Internet"]}, {cat:"Tech/Casa", word:"Mouse", hints:["Arrastrar", "Botones"]},
-            {cat:"Tech/Casa", word:"Teclado", hints:["Letras", "Luces"]}, {cat:"Tech/Casa", word:"Monitor", hints:["Resolución", "Pulgadas"]},
+            // FRUTAS
+            {cat:"Frutas", word:"Mango", hints:["Amarillo", "Tropical"]}, {cat:"Frutas", word:"Fresa", hints:["Roja", "Pequeña"]},
+            {cat:"Frutas", word:"Piña", hints:["Corona", "Tropical"]}, {cat:"Frutas", word:"Sandía", hints:["Verde", "Semillas"]},
+            {cat:"Frutas", word:"Banano", hints:["Amarillo", "Mono"]}, {cat:"Frutas", word:"Uva", hints:["Racimo", "Vino"]},
+            {cat:"Frutas", word:"Naranja", hints:["Cítrica", "Jugo"]}, {cat:"Frutas", word:"Manzana", hints:["Roja", "Newton"]},
+            {cat:"Frutas", word:"Cereza", hints:["Pareja", "Roja"]}, {cat:"Frutas", word:"Limón", hints:["Ácido", "Verde"]},
+            {cat:"Frutas", word:"Papaya", hints:["Semillas", "Tropical"]}, {cat:"Frutas", word:"Coco", hints:["Duro", "Palmera"]},
+            {cat:"Frutas", word:"Durazno", hints:["Peludo", "Dulce"]}, {cat:"Frutas", word:"Kiwi", hints:["Verde", "Peludo"]},
+            {cat:"Frutas", word:"Guanábana", hints:["Espinas", "Blanca"]}, {cat:"Frutas", word:"Lulo", hints:["Ácido", "Colombiano"]},
+            {cat:"Frutas", word:"Maracuyá", hints:["Ácida", "Semillas"]}, {cat:"Frutas", word:"Mora", hints:["Morada", "Jugo"]},
+            {cat:"Frutas", word:"Mandarina", hints:["Gajos", "Cáscara"]}, {cat:"Frutas", word:"Aguacate", hints:["Verde", "Guacamole"]},
 
-            // INGENIERÍA DE SISTEMAS
-            {cat:"Ing. Sistemas", word:"Python", hints:["Bibliotecas", "Interpretado"]}, {cat:"Ing. Sistemas", word:"JavaScript", hints:["Navegador", "Web"]},
-            {cat:"Ing. Sistemas", word:"Java", hints:["Café", "POO"]}, {cat:"Ing. Sistemas", word:"C++", hints:["Plus", "POO"]},
-            {cat:"Ing. Sistemas", word:"HTML", hints:["Etiquetas", "WEB"]}, {cat:"Ing. Sistemas", word:"CSS", hints:["Estilos", "Diseño"]},
-            {cat:"Ing. Sistemas", word:"SQL", hints:["Base", "Datos"]}, {cat:"Ing. Sistemas", word:"PHP", hints:["Servidor", "Web"]},
-            {cat:"Ing. Sistemas", word:"React", hints:["Componentes", "Facebook"]}, {cat:"Ing. Sistemas", word:"Node.js", hints:["Servidor", "JavaScript"]},
-            {cat:"Ing. Sistemas", word:"Git", hints:["Versión", "Control"]}, {cat:"Ing. Sistemas", word:"API", hints:["Conexión", "Comunicación"]},
-            {cat:"Ing. Sistemas", word:"Bug", hints:["Error", "Lag"]}, 
-            {cat:"Ing. Sistemas", word:"Algoritmo", hints:["Pasos", "Procesos"]}, {cat:"Ing. Sistemas", word:"Variable", hints:["Modificable", "Dato"]},
+            // ROPA
+            {cat:"Ropa", word:"Zapatos", hints:["Pies", "Cordones"]}, {cat:"Ropa", word:"Sombrero", hints:["Cabeza", "Sol"]},
+            {cat:"Ropa", word:"Corbata", hints:["Cuello", "Formal"]}, {cat:"Ropa", word:"Bufanda", hints:["Cuello", "Frío"]},
+            {cat:"Ropa", word:"Guantes", hints:["Manos", "Invierno"]}, {cat:"Ropa", word:"Camiseta", hints:["Algodón", "Manga"]},
+            {cat:"Ropa", word:"Pantalón", hints:["Piernas", "Cinturón"]}, {cat:"Ropa", word:"Vestido", hints:["Elegante", "Fiesta"]},
+            {cat:"Ropa", word:"Chaqueta", hints:["Cierre", "Frío"]}, {cat:"Ropa", word:"Medias", hints:["Pies", "Par"]},
+            {cat:"Ropa", word:"Gorra", hints:["Visera", "Cabeza"]}, {cat:"Ropa", word:"Pijama", hints:["Dormir", "Noche"]},
+            {cat:"Ropa", word:"Falda", hints:["Piernas", "Vuelo"]}, {cat:"Ropa", word:"Botas", hints:["Lluvia", "Caña"]},
+            {cat:"Ropa", word:"Sudadera", hints:["Capucha", "Deportiva"]}, {cat:"Ropa", word:"Bermudas", hints:["Cortas", "Verano"]},
+            {cat:"Ropa", word:"Delantal", hints:["Cocina", "Amarra"]}, {cat:"Ropa", word:"Cinturón", hints:["Hebilla", "Cintura"]},
+            {cat:"Ropa", word:"Sandalias", hints:["Playa", "Abiertas"]}, {cat:"Ropa", word:"Traje", hints:["Formal", "Sastre"]},
 
-            // ARQUITECTURA
-            {cat:"Arquitectura", word:"Plano", hints:["Dibujo", "Diseño"]}, {cat:"Arquitectura", word:"Escalera", hints:["Subir", "Peldaños"]},
-            {cat:"Arquitectura", word:"Ventana", hints:["Vidrio", "Luz"]}, {cat:"Arquitectura", word:"Columna", hints:["Soporte", "Vertical"]},
-            {cat:"Arquitectura", word:"Arco", hints:["Curvo", "Puerta"]}, {cat:"Arquitectura", word:"Cúpula", hints:["Redonda", "Techo"]},
-            {cat:"Arquitectura", word:"Fachada", hints:["Frontal", "Exterior"]}, {cat:"Arquitectura", word:"Balcón", hints:["Exterior", "Vista"]},
-            {cat:"Arquitectura", word:"Azotea", hints:["Techo", "Arriba"]}, {cat:"Arquitectura", word:"Cimientos", hints:["Base", "Fundación"]},
-            {cat:"Arquitectura", word:"Viga", hints:["Soporte", "Horizontal"]}, {cat:"Arquitectura", word:"Muro", hints:["Pared", "Separar"]},
-            {cat:"Arquitectura", word:"Domo", hints:["Cúpula", "Redondo"]}, {cat:"Arquitectura", word:"Atrio", hints:["Patio", "Entrada"]},
-            {cat:"Arquitectura", word:"Nave", hints:["Espacio", "Largo"]}, {cat:"Arquitectura", word:"Pórtico", hints:["Entrada", "Columnas"]},
+            // PARTES DEL CUERPO
+            {cat:"Partes del Cuerpo", word:"Rodilla", hints:["Articulación", "Pierna"]}, {cat:"Partes del Cuerpo", word:"Codo", hints:["Brazo", "Doblar"]},
+            {cat:"Partes del Cuerpo", word:"Hígado", hints:["Órgano", "Derecho"]}, {cat:"Partes del Cuerpo", word:"Cerebro", hints:["Pensar", "Cabeza"]},
+            {cat:"Partes del Cuerpo", word:"Corazón", hints:["Late", "Pecho"]}, {cat:"Partes del Cuerpo", word:"Pulmón", hints:["Respirar", "Aire"]},
+            {cat:"Partes del Cuerpo", word:"Estómago", hints:["Hambre", "Digestión"]}, {cat:"Partes del Cuerpo", word:"Tobillo", hints:["Pie", "Articulación"]},
+            {cat:"Partes del Cuerpo", word:"Muñeca", hints:["Mano", "Reloj"]}, {cat:"Partes del Cuerpo", word:"Hombro", hints:["Brazo", "Cargar"]},
+            {cat:"Partes del Cuerpo", word:"Costilla", hints:["Hueso", "Costado"]}, {cat:"Partes del Cuerpo", word:"Lengua", hints:["Sabor", "Hablar"]},
+            {cat:"Partes del Cuerpo", word:"Oreja", hints:["Escuchar", "Arete"]}, {cat:"Partes del Cuerpo", word:"Uña", hints:["Dedo", "Crecer"]},
+            {cat:"Partes del Cuerpo", word:"Columna", hints:["Espalda", "Vértebra"]}, {cat:"Partes del Cuerpo", word:"Ceja", hints:["Ojo", "Pelo"]},
+            {cat:"Partes del Cuerpo", word:"Talón", hints:["Pie", "Aquiles"]}, {cat:"Partes del Cuerpo", word:"Ombligo", hints:["Barriga", "Centro"]},
+            {cat:"Partes del Cuerpo", word:"Mandíbula", hints:["Masticar", "Cara"]}, {cat:"Partes del Cuerpo", word:"Riñón", hints:["Filtrar", "Órgano"]},
 
-            // VENEZUELA
-            {cat:"Venezuela", word:"Arepa", hints:["Harina", "Maíz"]}, {cat:"Venezuela", word:"Turpial", hints:["Ave", "Amarillo"]},
-            {cat:"Venezuela", word:"Araguaney", hints:["Árbol", "Amarillo"]}, {cat:"Venezuela", word:"Pabellón", hints:["Plato", "Caraotas"]},
-            {cat:"Venezuela", word:"Hallaca", hints:["Navidad", "Aceitunas"]}, {cat:"Venezuela", word:"Tequeño", hints:["Queso", "Frito"]},
-            {cat:"Venezuela", word:"Cachapa", hints:["Maíz", "Dulce"]}, {cat:"Venezuela", word:"Caracas", hints:["Ciudad", "Las Mercedes"]},
-            {cat:"Venezuela", word:"Chicha", hints:["Bebida", "Arroz"]}, {cat:"Venezuela", word:"Barinas", hints:["Monte", "Burras"]},
-            {cat:"Venezuela", word:"Orinoco", hints:["Río", "Largo"]}, {cat:"Venezuela", word:"Ávila", hints:["Montaña", "Caracas"]},
-            {cat:"Venezuela", word:"Salto Ángel", hints:["Catarata", "Alto"]}, {cat:"Venezuela", word:"Los Roques", hints:["Islas", "Azul"]},
-            {cat:"Venezuela", word:"Simón Bolívar", hints:["Libertad", "Historia"]}, {cat:"Venezuela", word:"Maracaibo", hints:["Ciudad", "Petróleo"]},
+            // PELÍCULAS FAMOSAS
+            {cat:"Películas", word:"Titanic", hints:["Barco", "Rose"]}, {cat:"Películas", word:"Matrix", hints:["Pastilla", "Neo"]},
+            {cat:"Películas", word:"El Rey León", hints:["Simba", "Sabana"]}, {cat:"Películas", word:"Toy Story", hints:["Woody", "Juguetes"]},
+            {cat:"Películas", word:"Harry Potter", hints:["Varita", "Hogwarts"]}, {cat:"Películas", word:"Avatar", hints:["Azul", "Pandora"]},
+            {cat:"Películas", word:"Jurassic Park", hints:["Dinosaurios", "Isla"]}, {cat:"Películas", word:"Shrek", hints:["Ogro", "Burro"]},
+            {cat:"Películas", word:"Frozen", hints:["Hielo", "Elsa"]}, {cat:"Películas", word:"Coco", hints:["México", "Muertos"]},
+            {cat:"Películas", word:"Avengers", hints:["Thanos", "Héroes"]}, {cat:"Películas", word:"Spider-Man", hints:["Telaraña", "Peter"]},
+            {cat:"Películas", word:"Batman", hints:["Gotham", "Murciélago"]}, {cat:"Películas", word:"Rápidos y Furiosos", hints:["Toretto", "Carreras"]},
+            {cat:"Películas", word:"Buscando a Nemo", hints:["Pez", "Océano"]}, {cat:"Películas", word:"Los Increíbles", hints:["Familia", "Súper"]},
+            {cat:"Películas", word:"Encanto", hints:["Colombia", "Madrigal"]}, {cat:"Películas", word:"It", hints:["Payaso", "Globo"]},
+            {cat:"Películas", word:"Intensamente", hints:["Emociones", "Llanto"]}, {cat:"Películas", word:"Star Wars", hints:["Espada", "Fuerza"]},
 
-            // MEDICINA
-            {cat:"Medicina", word:"Estetoscopio", hints:["Escuchar", "Pecho"]}, {cat:"Medicina", word:"Termómetro", hints:["Temperatura", "Oral"]},
-            {cat:"Medicina", word:"Jeringa", hints:["Miedo", "Suero"]}, {cat:"Medicina", word:"Bisturí", hints:["Cuchilla", "Cirugía"]},
-            {cat:"Medicina", word:"Radiografía", hints:["Fractura", "Huesos"]}, {cat:"Medicina", word:"Electrocardiograma", hints:["Corazón", "Ondas"]},
-            {cat:"Medicina", word:"Tensiómetro", hints:["Presión", "Brazo"]}, {cat:"Medicina", word:"Otoscopio", hints:["Oído", "Luz"]},
-            {cat:"Medicina", word:"Guantes", hints:["Látex", "Protección"]}, {cat:"Medicina", word:"Mascarilla", hints:["COVID", "Protección"]},
-            {cat:"Medicina", word:"Bata", hints:["Blanca", "Uniforme"]}, {cat:"Medicina", word:"Ambulancia", hints:["Emergencia", "Sirena"]},
-            {cat:"Medicina", word:"Hospital", hints:["Enfermos", "Camas"]}, {cat:"Medicina", word:"Farmacia", hints:["Estantes", "Pastillas"]},
-            {cat:"Medicina", word:"Cirujano", hints:["Operación", "Quirófano"]}, {cat:"Medicina", word:"Enfermera", hints:["Cuidado", "Inyección"]},
-            {cat:"Medicina", word:"Anestesia", hints:["Sueño", "Operación"]}, {cat:"Medicina", word:"Sutura", hints:["Hilo", "Cicatriz"]},
-            {cat:"Medicina", word:"Vendaje", hints:["Gasas", "Herida"]}, {cat:"Medicina", word:"Antibiótico", hints:["Bacteria", "Infección"]},
+            // VARIOS (palabras colombianas variadas)
+            {cat:"Varios", word:"Tinto", hints:["Café", "Negro"]},
+            {cat:"Varios", word:"Chiva", hints:["Bus", "Colores"]},
+            {cat:"Varios", word:"Hamaca", hints:["Colgar", "Descanso"]},
+            {cat:"Varios", word:"Vallenato", hints:["Acordeón", "Costa"]},
+            {cat:"Varios", word:"Cumbia", hints:["Baile", "Pollera"]},
+            {cat:"Varios", word:"Sombrero vueltiao", hints:["Caña", "Sinú"]},
+            {cat:"Varios", word:"Mochila", hints:["Wayuu", "Colores"]},
+            {cat:"Varios", word:"Esmeralda", hints:["Verde", "Muzo"]},
+            {cat:"Varios", word:"Machete", hints:["Cortar", "Campo"]},
+            {cat:"Varios", word:"Poncho", hints:["Lana", "Boyacá"]},
+            {cat:"Varios", word:"Chicha", hints:["Maíz", "Fermentado"]},
+            {cat:"Varios", word:"Ñapa", hints:["Extra", "Gratis"]},
+            {cat:"Varios", word:"Guayabo", hints:["Triste", "Resaca"]},
+            {cat:"Varios", word:"Parcero", hints:["Amigo", "Medellín"]},
+            {cat:"Varios", word:"Ciclovía", hints:["Bicicleta", "Domingo"]},
+            {cat:"Varios", word:"Nevado", hints:["Nieve", "Montaña"]},
+            {cat:"Varios", word:"Loro", hints:["Habla", "Verde"]},
+            {cat:"Varios", word:"Guadua", hints:["Bambú", "Eje cafetero"]},
+            {cat:"Varios", word:"Totuma", hints:["Recipiente", "Calabaza"]},
+            {cat:"Varios", word:"Carriel", hints:["Cuero", "Antioquia"]},
+            {cat:"Varios", word:"Raspao", hints:["Hielo", "Jarabe"]},
+            {cat:"Varios", word:"Buseta", hints:["Transporte", "Pequeño"]},
+            {cat:"Varios", word:"Olla", hints:["Cocinar", "Metal"]},
+            {cat:"Varios", word:"Canoa", hints:["Río", "Madera"]},
+            {cat:"Varios", word:"Cabuya", hints:["Cuerda", "Amarra"]},
+            {cat:"Varios", word:"Mango biche", hints:["Verde", "Sal"]},
+            {cat:"Varios", word:"Cotiza", hints:["Sandalia", "Llano"]},
+            {cat:"Varios", word:"Trapiche", hints:["Caña", "Moler"]},
+            {cat:"Varios", word:"Tinaja", hints:["Barro", "Agua"]},
+            {cat:"Varios", word:"Chócolo", hints:["Maíz", "Tierno"]},
+            {cat:"Varios", word:"Guarapo", hints:["Caña", "Bebida"]},
+            {cat:"Varios", word:"Mecedora", hints:["Silla", "Balancear"]},
+            {cat:"Varios", word:"Trompo", hints:["Girar", "Cuerda"]},
+            {cat:"Varios", word:"Cauchera", hints:["Lanzar", "Piedra"]},
+            {cat:"Varios", word:"Baloto", hints:["Lotería", "Suerte"]},
+            {cat:"Varios", word:"Transmilenio", hints:["Bogotá", "Rojo"]},
+            {cat:"Varios", word:"Teleférico", hints:["Cable", "Montaña"]},
+            {cat:"Varios", word:"Salchipapa", hints:["Salchicha", "Papa"]},
+            {cat:"Varios", word:"Cholado", hints:["Hielo", "Frutas"]},
+            {cat:"Varios", word:"Chontaduro", hints:["Palma", "Costa"]},
+            {cat:"Varios", word:"Chucula", hints:["Chocolate", "Plátano"]},
+            {cat:"Varios", word:"Bocachico", hints:["Pez", "Río"]},
+            {cat:"Varios", word:"Pilón", hints:["Madera", "Machacar"]},
+            {cat:"Varios", word:"Aguardiente", hints:["Anís", "Fiesta"]},
+            {cat:"Varios", word:"Chicharrón", hints:["Cerdo", "Crujiente"]},
+            {cat:"Varios", word:"Mazorca", hints:["Maíz", "Mantequilla"]},
+            {cat:"Varios", word:"Mecato", hints:["Snack", "Tienda"]},
+            {cat:"Varios", word:"Parche", hints:["Plan", "Amigos"]},
+            {cat:"Varios", word:"Rumba", hints:["Fiesta", "Bailar"]},
+            {cat:"Varios", word:"Chicharra", hints:["Insecto", "Ruido"]},
+            {cat:"Varios", word:"Arepa e' huevo", hints:["Frita", "Costa"]},
+            {cat:"Varios", word:"Tamarindo", hints:["Ácido", "Bola"]},
+            {cat:"Varios", word:"Ají", hints:["Picante", "Salsa"]},
+            {cat:"Varios", word:"Fogón", hints:["Leña", "Cocinar"]},
+            {cat:"Varios", word:"Petaca", hints:["Maleta", "Viejo"]},
+            {cat:"Varios", word:"Guayaba", hints:["Rosada", "Bocadillo"]},
+            {cat:"Varios", word:"Bambuco", hints:["Baile", "Andino"]},
+            {cat:"Varios", word:"Joropo", hints:["Llano", "Arpa"]},
+            {cat:"Varios", word:"Champeta", hints:["Baile", "Cartagena"]},
+            {cat:"Varios", word:"Bullerengue", hints:["Tambor", "Palenque"]},
+            {cat:"Varios", word:"Tejo", hints:["Pólvora", "Cerveza"]},
+            {cat:"Varios", word:"Rana", hints:["Argolla", "Juego"]},
+            {cat:"Varios", word:"Dominó", hints:["Fichas", "Puntos"]},
+            {cat:"Varios", word:"Parqués", hints:["Dados", "Tablero"]},
+            {cat:"Varios", word:"Billar", hints:["Bolas", "Taco"]},
+            {cat:"Varios", word:"Gallera", hints:["Gallos", "Pelea"]},
+            {cat:"Varios", word:"Cabalgata", hints:["Caballo", "Feria"]},
+            {cat:"Varios", word:"Corrida", hints:["Toro", "Plaza"]},
+            {cat:"Varios", word:"Novena", hints:["Diciembre", "Rezar"]},
+            {cat:"Varios", word:"Pesebre", hints:["Navidad", "Niño Dios"]},
+            {cat:"Varios", word:"Velitas", hints:["Diciembre", "Siete"]},
+            {cat:"Varios", word:"Natilla", hints:["Navidad", "Dulce"]},
+            {cat:"Varios", word:"Tamal tolimense", hints:["Hoja", "Navidad"]},
+            {cat:"Varios", word:"Lechona tolimense", hints:["Cerdo", "Rellena"]},
+            {cat:"Varios", word:"Café", hints:["Grano", "Taza"]},
+            {cat:"Varios", word:"Cacao", hints:["Chocolate", "Grano"]},
+            {cat:"Varios", word:"Panela", hints:["Caña", "Bloque"]},
+            {cat:"Varios", word:"Yuca", hints:["Raíz", "Freír"]},
+            {cat:"Varios", word:"Plátano", hints:["Verde", "Freír"]},
+            {cat:"Varios", word:"Arroz", hints:["Grano", "Blanco"]},
+            {cat:"Varios", word:"Fríjol", hints:["Grano", "Rojo"]},
+            {cat:"Varios", word:"Chirimoya", hints:["Dulce", "Semillas"]},
+            {cat:"Varios", word:"Zapote", hints:["Naranja", "Dulce"]},
+            {cat:"Varios", word:"Churro", hints:["Frito", "Azúcar"]},
+            {cat:"Varios", word:"Envuelto", hints:["Hoja", "Maíz"]},
+            {cat:"Varios", word:"Almojábana", hints:["Queso", "Redonda"]},
+            {cat:"Varios", word:"Garulla", hints:["Queso", "Boyacá"]},
+            {cat:"Varios", word:"Kumis", hints:["Leche", "Ácido"]},
+            {cat:"Varios", word:"Avena", hints:["Bebida", "Fría"]},
+            {cat:"Varios", word:"Refajo", hints:["Cerveza", "Colombiana"]},
+            {cat:"Varios", word:"Lulada", hints:["Lulo", "Cali"]},
+            {cat:"Varios", word:"Champús", hints:["Maíz", "Piña"]},
+            {cat:"Varios", word:"Canelazo", hints:["Aguardiente", "Canela"]},
+            {cat:"Varios", word:"Guaro", hints:["Trago", "Anís"]},
+            {cat:"Varios", word:"Chaza", hints:["Juego", "Nariño"]},
+            {cat:"Varios", word:"Corozo", hints:["Rojo", "Jugo"]},
+            {cat:"Varios", word:"Patacón pisao", hints:["Plátano", "Costa"]},
+            {cat:"Varios", word:"Carimañola", hints:["Yuca", "Rellena"]},
+            {cat:"Varios", word:"Suero costeño", hints:["Leche", "Salado"]},
+            {cat:"Varios", word:"Mote de queso", hints:["Ñame", "Queso"]},
+            {cat:"Varios", word:"Arroz de coco", hints:["Dulce", "Costa"]},
+            {cat:"Varios", word:"Cocada", hints:["Coco", "Dulce"]},
+            {cat:"Varios", word:"Arequipe", hints:["Leche", "Dulce"]},
+            {cat:"Varios", word:"Brevas", hints:["Higo", "Arequipe"]},
+            {cat:"Varios", word:"Manjar blanco", hints:["Leche", "Valle"]},
+            {cat:"Varios", word:"Torta de choclo", hints:["Maíz", "Horno"]},
+            {cat:"Varios", word:"Mute", hints:["Sopa", "Santander"]},
+            {cat:"Varios", word:"Pepitoria", hints:["Cabro", "Santander"]},
+            {cat:"Varios", word:"Cuchuco", hints:["Sopa", "Trigo"]},
+            {cat:"Varios", word:"Mondongo", hints:["Panza", "Sopa"]},
+            {cat:"Varios", word:"Viudo de pescado", hints:["Río", "Plátano"]},
+            {cat:"Varios", word:"Mogolla", hints:["Pan", "Redondo"]},
+            {cat:"Varios", word:"Calentado", hints:["Sobras", "Desayuno"]},
+            {cat:"Varios", word:"Changua bogotana", hints:["Huevo", "Caldo"]},
+            {cat:"Varios", word:"Fritanga", hints:["Cerdo", "Mixta"]},
+            {cat:"Varios", word:"Picada", hints:["Carne", "Tabla"]},
+            {cat:"Varios", word:"Ruana", hints:["Lana", "Frío"]},
+            {cat:"Varios", word:"Alpargata", hints:["Fique", "Pie"]},
+            {cat:"Varios", word:"Bambuco sureño", hints:["Guitarra", "Sur"]},
+            {cat:"Varios", word:"Mapalé", hints:["Baile", "Tambor"]},
+            {cat:"Varios", word:"Porro", hints:["Banda", "Córdoba"]},
+            {cat:"Varios", word:"Gaita", hints:["Flauta", "Costa"]},
+            {cat:"Varios", word:"Papayera", hints:["Banda", "Pueblo"]},
+            {cat:"Varios", word:"Silletero", hints:["Flores", "Medellín"]},
+            {cat:"Varios", word:"Jeepao", hints:["Jeep", "Eje cafetero"]},
+            {cat:"Varios", word:"Willy", hints:["Jeep", "Ruedas"]},
+            {cat:"Varios", word:"Chigüiro", hints:["Roedor", "Llano"]},
+            {cat:"Varios", word:"Cóndor", hints:["Ave", "Andes"]},
+            {cat:"Varios", word:"Danta", hints:["Selva", "Trompa"]},
+            {cat:"Varios", word:"Jaguar", hints:["Felino", "Selva"]},
+            {cat:"Varios", word:"Oso de anteojos", hints:["Gafas", "Páramo"]},
+            {cat:"Varios", word:"Tucán", hints:["Pico", "Colores"]},
+            {cat:"Varios", word:"Guacamaya", hints:["Plumas", "Colores"]},
+            {cat:"Varios", word:"Colibrí", hints:["Pequeño", "Rápido"]},
+            {cat:"Varios", word:"Boa", hints:["Serpiente", "Grande"]},
+            {cat:"Varios", word:"Piraña", hints:["Dientes", "Río"]},
+            {cat:"Varios", word:"Palma de cera", hints:["Alta", "Quindío"]},
+            {cat:"Varios", word:"Orquídea", hints:["Flor", "Nacional"]},
+            {cat:"Varios", word:"Frailejón", hints:["Páramo", "Agua"]},
+            {cat:"Varios", word:"Canasto", hints:["Mimbre", "Cargar"]},
+            {cat:"Varios", word:"Wayuu", hints:["Indígena", "Guajira"]},
+            {cat:"Varios", word:"Dorado", hints:["Leyenda", "Oro"]},
+            {cat:"Varios", word:"Ballenato", hints:["Cría", "Pacífico"]},
+            {cat:"Varios", word:"Carnaval", hints:["Barranquilla", "Disfraces"]},
+            {cat:"Varios", word:"Feria de Cali", hints:["Salsa", "Diciembre"]},
+            {cat:"Varios", word:"Poporo", hints:["Cal", "Muisca"]},
+            {cat:"Varios", word:"Chirimía", hints:["Música", "Pacífico"]},
+            {cat:"Varios", word:"Currulao", hints:["Marimba", "Pacífico"]},
 
-            // FAMOSOS
-            {cat:"Famosos", word:"Messi", hints:["Miami", "Oro"]}, {cat:"Famosos", word:"Elon Musk", hints:["Espacio", "Cohete"]},
-            {cat:"Famosos", word:"Trump", hints:["Torre", "Presidente"]}, {cat:"Famosos", word:"Taylor Swift", hints:["Agosto", "Gato"]},
-            {cat:"Famosos", word:"Ariana Grande", hints:["Anillos", "Coleta"]}, {cat:"Famosos", word:"Leonardo Di Caprio", hints:["Oscar", "Lobo"]},
-            {cat:"Famosos", word:"Brad Pitt", hints:["Angelina Jolie", "Fight Club"]}, {cat:"Famosos", word:"Nikola Tesla", hints:["Corriente", "Inventor"]},
-            {cat:"Famosos", word:"Marie Curie", hints:["Radio", "Ciencia"]}, {cat:"Famosos", word:"Einstein", hints:["Coeficiente", "Cabello"]},
-            {cat:"Famosos", word:"Darwin", hints:["Evolución", "Islas"]}, {cat:"Famosos", word:"Cristiano Ronaldo", hints:["Disciplina", "Gol"]},
-            {cat:"Famosos", word:"Hitler", hints:["Alemania", "Guerra"]}, {cat:"Famosos", word:"El Papa", hints:["Religión", "Blanco"]},
-            {cat:"Famosos", word:"La Roca", hints:["Fuerza", "WWE"]}, {cat:"Famosos", word:"Will Smith", hints:["Robot", "Cachetada"]},
-            {cat:"Famosos", word:"Angelina Jolie", hints:["Labios", "Actriz"]}, {cat:"Famosos", word:"Nicolás Maduro", hints:["Bigote", "Presidente"]},
-            {cat:"Famosos", word:"Van Gogh", hints:["Cielo", "Pintura"]}, {cat:"Famosos", word:"Speed", hints:["Streamer", "Rápido"]},
-            {cat:"Famosos", word:"Westcol", hints:["Rata", "Streamer"]}, {cat:"Famosos", word:"Kanye West", hints:["Polémicas", "Yeezy"]},
-            {cat:"Famosos", word:"Mbappé", hints:["Mundial", "Velocidad"]}, {cat:"Famosos", word:"J Balvin", hints:["Reggaeton", "Colombia"]},
-            {cat:"Famosos", word:"Bruno Mars", hints:["Pop", "Luna"]}, {cat:"Famosos", word:"LeBron James", hints:["Rey", "Basquetball"]},
-            {cat:"Famosos", word:"Curry", hints:["Tres", "Golden"]}, {cat:"Famosos", word:"Shakespeare", hints:["Teatro", "Inglés"]},
-            {cat:"Famosos", word:"Shakira", hints:["Ruptura", "Ferrari"]}, {cat:"Famosos", word:"Javier Milei", hints:["Cabello", "Argentina"]},
-            {cat:"Famosos", word:"Adam Sandler", hints:["Comedia", "Happy"]}, {cat:"Famosos", word:"Johnny Depp", hints:["Pirata", "Juicio"]},
-            {cat:"Famosos", word:"Reina Isabel", hints:["Segunda", "Corona"]}, {cat:"Famosos", word:"Princesa Diana", hints:["Accidente", "Corona"]},
-            {cat:"Famosos", word:"Justin Bieber", hints:["Baby", "Canadá"]}, {cat:"Famosos", word:"Bad Bunny", hints:["Verano", "Trap"]},
-            {cat:"Famosos", word:"Kardashian", hints:["Reality", "Famosas"]}, {cat:"Famosos", word:"Pelé", hints:["Rey", "Mundial"]},
-            {cat:"Famosos", word:"Maradona", hints:["Mano", "Argentina"]}, {cat:"Famosos", word:"BTS", hints:["Corea", "7"]},
-            {cat:"Famosos", word:"Coldplay", hints:["Amarillo", "Banda"]}, {cat:"Famosos", word:"Michael Jackson", hints:["Pop", "Rey"]},
-            {cat:"Famosos", word:"Mark Zuckerberg", hints:["Red Social", "Meta"]}, {cat:"Famosos", word:"Jeff Bezos", hints:["Calvo", "Rico"]},
-            {cat:"Famosos", word:"Bill Gates", hints:["Informática", "Windows"]}, {cat:"Famosos", word:"Serena Williams", hints:["Tenis", "Mujer"]}
+            // OLORES
+            {cat:"Olores", word:"Gasolina", hints:["Estación", "Carro"]},
+            {cat:"Olores", word:"Café", hints:["Mañana", "Taza"]},
+            {cat:"Olores", word:"Perfume", hints:["Frasco", "Elegante"]},
+            {cat:"Olores", word:"Humo", hints:["Fuego", "Gris"]},
+            {cat:"Olores", word:"Cloro", hints:["Piscina", "Limpieza"]},
+            {cat:"Olores", word:"Pintura", hints:["Brocha", "Pared"]},
+            {cat:"Olores", word:"Canela", hints:["Especia", "Dulce"]},
+            {cat:"Olores", word:"Ajo", hints:["Cocina", "Fuerte"]},
+            {cat:"Olores", word:"Cebolla", hints:["Llorar", "Picar"]},
+            {cat:"Olores", word:"Jabón", hints:["Baño", "Espuma"]},
+            {cat:"Olores", word:"Hierba recién cortada", hints:["Jardín", "Verde"]},
+            {cat:"Olores", word:"Vainilla", hints:["Dulce", "Postre"]},
+            {cat:"Olores", word:"Vinagre", hints:["Ácido", "Ensalada"]},
+            {cat:"Olores", word:"Alcohol", hints:["Hospital", "Desinfectar"]},
+            {cat:"Olores", word:"Lavanda", hints:["Morada", "Relajar"]},
+            {cat:"Olores", word:"Podrido", hints:["Basura", "Horrible"]},
+            {cat:"Olores", word:"Incienso", hints:["Iglesia", "Humo"]},
+            {cat:"Olores", word:"Menta", hints:["Fresca", "Chicle"]},
+            {cat:"Olores", word:"Sudor", hints:["Ejercicio", "Cuerpo"]},
+            {cat:"Olores", word:"Bebé", hints:["Talco", "Tierno"]},
+
+            // SONIDOS
+            {cat:"Sonidos", word:"Trueno", hints:["Lluvia", "Cielo"]},
+            {cat:"Sonidos", word:"Ronquido", hints:["Dormir", "Noche"]},
+            {cat:"Sonidos", word:"Campana", hints:["Iglesia", "Metal"]},
+            {cat:"Sonidos", word:"Sirena", hints:["Ambulancia", "Emergencia"]},
+            {cat:"Sonidos", word:"Silbido", hints:["Boca", "Llamar"]},
+            {cat:"Sonidos", word:"Ladrido", hints:["Perro", "Fuerte"]},
+            {cat:"Sonidos", word:"Maullido", hints:["Gato", "Noche"]},
+            {cat:"Sonidos", word:"Aplausos", hints:["Manos", "Público"]},
+            {cat:"Sonidos", word:"Estornudo", hints:["Nariz", "Salud"]},
+            {cat:"Sonidos", word:"Alarma", hints:["Reloj", "Mañana"]},
+            {cat:"Sonidos", word:"Grito", hints:["Miedo", "Fuerte"]},
+            {cat:"Sonidos", word:"Risa", hints:["Feliz", "Boca"]},
+            {cat:"Sonidos", word:"Llanto", hints:["Triste", "Lágrima"]},
+            {cat:"Sonidos", word:"Eructo", hints:["Boca", "Gas"]},
+            {cat:"Sonidos", word:"Hipo", hints:["Repetir", "Diafragma"]},
+            {cat:"Sonidos", word:"Timbre", hints:["Puerta", "Sonar"]},
+            {cat:"Sonidos", word:"Disparo", hints:["Arma", "Fuerte"]},
+            {cat:"Sonidos", word:"Motor", hints:["Carro", "Arrancar"]},
+            {cat:"Sonidos", word:"Goteo", hints:["Agua", "Llave"]},
+            {cat:"Sonidos", word:"Explosión", hints:["Bomba", "Fuerte"]},
+
+            // PERSONAJES FAMOSOS
+            {cat:"Personajes Famosos", word:"Shakira", hints:["Caderas", "Barranquilla"]},
+            {cat:"Personajes Famosos", word:"Messi", hints:["10", "Argentina"]},
+            {cat:"Personajes Famosos", word:"Goku", hints:["Saiyan", "Kamehameha"]},
+            {cat:"Personajes Famosos", word:"Bob Esponja", hints:["Piña", "Mar"]},
+            {cat:"Personajes Famosos", word:"Mario Bros", hints:["Fontanero", "Nintendo"]},
+            {cat:"Personajes Famosos", word:"Mickey Mouse", hints:["Orejas", "Disney"]},
+            {cat:"Personajes Famosos", word:"J Balvin", hints:["Reggaetón", "Medellín"]},
+            {cat:"Personajes Famosos", word:"Cristiano Ronaldo", hints:["Siuu", "Portugal"]},
+            {cat:"Personajes Famosos", word:"Michael Jackson", hints:["Moonwalk", "Pop"]},
+            {cat:"Personajes Famosos", word:"Einstein", hints:["Genio", "Lengua"]},
+            {cat:"Personajes Famosos", word:"Maluma", hints:["Papi Juancho", "Medellín"]},
+            {cat:"Personajes Famosos", word:"Bad Bunny", hints:["Conejo", "Puerto Rico"]},
+            {cat:"Personajes Famosos", word:"El Chavo", hints:["Barril", "Vecindad"]},
+            {cat:"Personajes Famosos", word:"Homero Simpson", hints:["Rosquilla", "Amarillo"]},
+            {cat:"Personajes Famosos", word:"Batman", hints:["Gotham", "Oscuro"]},
+            {cat:"Personajes Famosos", word:"Spider-Man", hints:["Araña", "Telaraña"]},
+            {cat:"Personajes Famosos", word:"Karol G", hints:["Bichota", "Azul"]},
+            {cat:"Personajes Famosos", word:"Taylor Swift", hints:["Eras", "Pop"]},
+            {cat:"Personajes Famosos", word:"Neymar", hints:["Brasil", "Caída"]},
+            {cat:"Personajes Famosos", word:"Pablo Escobar", hints:["Narcos", "Medellín"]},
+            {cat:"Personajes Famosos", word:"Gabriel García Márquez", hints:["Gabo", "Macondo"]},
+            {cat:"Personajes Famosos", word:"Juanes", hints:["Camisa negra", "Rock"]},
+            {cat:"Personajes Famosos", word:"Carlos Vives", hints:["Vallenato", "Santa Marta"]},
+            {cat:"Personajes Famosos", word:"James Rodríguez", hints:["Gol", "Volea"]},
+            {cat:"Personajes Famosos", word:"Falcao", hints:["Tigre", "Goleador"]},
+            {cat:"Personajes Famosos", word:"Diomedes Díaz", hints:["Vallenato", "Cacique"]},
+            {cat:"Personajes Famosos", word:"Bugs Bunny", hints:["Zanahoria", "Conejo"]},
+            {cat:"Personajes Famosos", word:"Pikachu", hints:["Eléctrico", "Amarillo"]},
+            {cat:"Personajes Famosos", word:"Elsa", hints:["Hielo", "Frozen"]},
+            {cat:"Personajes Famosos", word:"Shrek", hints:["Ogro", "Pantano"]},
+            {cat:"Personajes Famosos", word:"Harry Potter", hints:["Cicatriz", "Mago"]},
+            {cat:"Personajes Famosos", word:"Naruto", hints:["Ninja", "Ramen"]},
+            {cat:"Personajes Famosos", word:"Maradona", hints:["Mano", "Dios"]},
+            {cat:"Personajes Famosos", word:"Daddy Yankee", hints:["Gasolina", "Cangri"]},
+            {cat:"Personajes Famosos", word:"Don Ramón", hints:["Renta", "Vecindad"]},
+            {cat:"Personajes Famosos", word:"Wolverine", hints:["Garras", "Metal"]},
+            {cat:"Personajes Famosos", word:"Thanos", hints:["Chasquido", "Guante"]},
+            {cat:"Personajes Famosos", word:"Freddy Mercury", hints:["Queen", "Bigote"]},
+            {cat:"Personajes Famosos", word:"Bob Marley", hints:["Reggae", "Rastas"]},
+            {cat:"Personajes Famosos", word:"Mona Lisa", hints:["Cuadro", "Sonrisa"]},
         ];
 
         /* --- LÓGICA DEL JUEGO --- */
@@ -1020,15 +1317,46 @@
         let impostorIndices = [];
         let turnIndex = 0;
         let scores = {};
-        let usedIndices = new Set();
+        let usedWords = new Set(); // Palabras ya jugadas (por texto, no por índice)
         let scoreboardPage = 0;
         const scoreboardPerPage = 3; // 3 rondas por página
-        let roundHistory = []; // Historial de rondas: [{word, impostors, category, won}]
+        let roundHistory = []; // Historial de rondas: [{word, impostors, category, winner}]
         let selectedCategories = []; // Categorías seleccionadas
+        let categoriesInitialized = false; // Evita re-seleccionar todas al volver a entrar
         let filteredDatabase = []; // Base de datos filtrada según categorías
+        let showHints = true; // Si se muestran pistas al impostor
+        let roundRecorded = true; // La ronda en curso ya quedó registrada en el marcador
+
+        const STORAGE_KEY = 'el-gran-impostor';
+
+        function saveState(){
+            try {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify({
+                    players, scores, roundHistory,
+                    selectedCategories, usedWords: [...usedWords]
+                }));
+            } catch(e) { /* modo incógnito o almacenamiento lleno */ }
+        }
+
+        function loadState(){
+            try {
+                const s = JSON.parse(localStorage.getItem(STORAGE_KEY));
+                if(!s) return;
+                if(Array.isArray(s.players)) players = s.players.filter(p => typeof p === 'string');
+                if(s.scores && typeof s.scores === 'object') scores = s.scores;
+                if(Array.isArray(s.roundHistory)) roundHistory = s.roundHistory;
+                if(Array.isArray(s.selectedCategories) && s.selectedCategories.length){
+                    selectedCategories = s.selectedCategories;
+                    categoriesInitialized = true;
+                }
+                if(Array.isArray(s.usedWords)) usedWords = new Set(s.usedWords);
+            } catch(e) { /* estado corrupto: se ignora */ }
+        }
 
         window.onload = () => {
-            addPlayerInput(); addPlayerInput(); addPlayerInput(); addPlayerInput();
+            loadState();
+            const initialNames = players.length ? players : ["", "", "", ""];
+            initialNames.forEach(name => addPlayerInput(name));
             updatePlayerCount();
             updateScoreboard();
         };
@@ -1038,9 +1366,9 @@
             const div = document.createElement('div');
             div.className = "flex gap-3 animate-enter player-input-item";
             div.innerHTML = `
-                <input type="text" placeholder="Nombre..." value="${value}" 
+                <input type="text" placeholder="Nombre..." value="${escapeHtml(value)}" oninput="updatePlayerCount()"
                     class="player-input w-full p-5 rounded-2xl text-white font-bold text-lg input-field placeholder-slate-500">
-                <button onclick="this.parentElement.remove(); updatePlayerCount()" 
+                <button onclick="this.parentElement.remove(); updatePlayerCount()" aria-label="Eliminar jugador"
                     class="px-5 rounded-2xl bg-red-900/40 text-red-300 border-2 border-red-900/60 hover:bg-red-900/60 transition-all font-black min-h-[52px] shadow-lg">✕</button>
             `;
             container.appendChild(div);
@@ -1057,13 +1385,14 @@
             }
             addPlayerInput(name);
             input.value = '';
-            updatePlayerCount();
             input.focus();
         }
 
         function updatePlayerCount() {
-            const count = document.getElementsByClassName('player-input').length;
-            document.getElementById('player-count').innerText = `${count} JUGADORES`;
+            const count = [...document.querySelectorAll('#players-list .player-input')]
+                .filter(input => input.value.trim() !== '').length;
+            const label = count === 1 ? 'JUGADOR' : 'JUGADORES';
+            document.getElementById('player-count').innerText = `${count} ${label}`;
             const impostorInput = document.getElementById('impostor-count');
             if(impostorInput){
                 const maxAllowed = Math.max(1, Math.floor(count/2));
@@ -1073,16 +1402,19 @@
         }
 
         function showScreen(screenId) {
-            document.querySelectorAll('body > div').forEach(div => div.classList.add('hidden-screen'));
+            document.querySelectorAll('.screen').forEach(div => div.classList.add('hidden-screen'));
             const target = document.getElementById(screenId);
             if(target) {
                 target.classList.remove('hidden-screen');
+                target.classList.remove('animate-enter');
+                void target.offsetWidth; // fuerza reflow para reiniciar la animación
                 target.classList.add('animate-enter');
             }
+            window.scrollTo(0, 0);
         }
 
         function startGame() {
-            const inputs = document.getElementsByClassName('player-input');
+            const inputs = document.querySelectorAll('#players-list .player-input');
             players = [];
             for(let input of inputs) {
                 if(input.value.trim() !== "") players.push(input.value.trim());
@@ -1093,26 +1425,36 @@
                 return;
             }
 
+            const repeated = [...new Set(players.filter((p, i) => players.indexOf(p) !== i))];
+            if(repeated.length) {
+                alert(`Hay nombres repetidos: ${repeated.join(', ')}. Cada jugador necesita un nombre distinto para el marcador.`);
+                return;
+            }
+
             players.forEach(p => { if(!(p in scores)) scores[p] = 0; });
+            saveState();
             showCategoriesScreen();
         }
 
         function showCategoriesScreen() {
             // Obtener todas las categorías únicas de la base de datos
             const allCategories = [...new Set(database.map(item => item.cat))];
-            
-            // Si no hay categorías seleccionadas, seleccionar todas por defecto
-            if(selectedCategories.length === 0) {
+
+            // Solo la primera vez: seleccionar todas por defecto
+            if(!categoriesInitialized && selectedCategories.length === 0) {
                 selectedCategories = [...allCategories];
             }
-            
+            categoriesInitialized = true;
+
             const grid = document.getElementById('categories-grid');
             grid.innerHTML = '';
-            
+
             allCategories.forEach(cat => {
                 const isSelected = selectedCategories.includes(cat);
-                const card = document.createElement('div');
-                card.className = `category-card rounded-xl md:rounded-2xl p-4 md:p-5 ${isSelected ? 'selected' : ''}`;
+                const card = document.createElement('button');
+                card.type = 'button';
+                card.className = `category-card rounded-xl md:rounded-2xl p-4 md:p-5 text-left w-full ${isSelected ? 'selected' : ''}`;
+                card.setAttribute('aria-pressed', isSelected);
                 card.onclick = () => toggleCategory(cat, card);
                 card.innerHTML = `
                     <div class="flex items-center justify-between">
@@ -1121,7 +1463,7 @@
                 `;
                 grid.appendChild(card);
             });
-            
+
             showScreen('screen-categories');
         }
 
@@ -1130,9 +1472,11 @@
             if(index > -1) {
                 selectedCategories.splice(index, 1);
                 cardElement.classList.remove('selected');
+                cardElement.setAttribute('aria-pressed', 'false');
             } else {
                 selectedCategories.push(category);
                 cardElement.classList.add('selected');
+                cardElement.setAttribute('aria-pressed', 'true');
             }
         }
 
@@ -1140,13 +1484,13 @@
             const allCategories = [...new Set(database.map(item => item.cat))];
             selectedCategories = [...allCategories];
             const cards = document.querySelectorAll('.category-card');
-            cards.forEach(card => card.classList.add('selected'));
+            cards.forEach(card => { card.classList.add('selected'); card.setAttribute('aria-pressed', 'true'); });
         }
 
         function deselectAllCategories() {
             selectedCategories = [];
             const cards = document.querySelectorAll('.category-card');
-            cards.forEach(card => card.classList.remove('selected'));
+            cards.forEach(card => { card.classList.remove('selected'); card.setAttribute('aria-pressed', 'false'); });
         }
 
         function confirmCategories() {
@@ -1154,13 +1498,11 @@
                 alert('¡Debes seleccionar al menos una categoría!');
                 return;
             }
-            
+
             // Filtrar la base de datos según las categorías seleccionadas
             filteredDatabase = database.filter(item => selectedCategories.includes(item.cat));
-            
-            // Reiniciar índices usados para la nueva base de datos filtrada
-            usedIndices.clear();
-            
+
+            saveState();
             setupRound();
         }
 
@@ -1171,24 +1513,33 @@
         function setupRound() {
             // Usar la base de datos filtrada si existe, sino usar la completa
             const dbToUse = filteredDatabase.length > 0 ? filteredDatabase : database;
-            const total = dbToUse.length;
-            
-            if(total === 0) {
+
+            if(dbToUse.length === 0) {
                 alert('No hay palabras disponibles con las categorías seleccionadas. Por favor selecciona al menos una categoría.');
                 showCategoriesScreen();
                 return;
             }
-            
-            let available = [];
-            for(let i = 0; i < total; i++) if(!usedIndices.has(i)) available.push(i);
+
+            // El toggle de pistas se puede cambiar entre rondas
+            const hintsCheckbox = document.getElementById('show-hints');
+            showHints = hintsCheckbox ? hintsCheckbox.checked : true;
+
+            // Palabras aún no jugadas (por texto: una palabra que está en dos
+            // categorías cuenta como una sola)
+            let available = dbToUse.filter(item => !usedWords.has(item.word));
             if(available.length === 0){
-                usedIndices.clear();
-                for(let i = 0; i < total; i++) available.push(i);
+                usedWords.clear();
+                available = [...dbToUse];
             }
-            const pick = available[Math.floor(Math.random() * available.length)];
-            usedIndices.add(pick);
-            currentRoundData = dbToUse[pick];
-            
+
+            // Elegir primero categoría y luego palabra, para que las categorías
+            // pequeñas salgan igual de seguido que las grandes
+            const cats = [...new Set(available.map(item => item.cat))];
+            const chosenCat = cats[Math.floor(Math.random() * cats.length)];
+            const pool = available.filter(item => item.cat === chosenCat);
+            currentRoundData = pool[Math.floor(Math.random() * pool.length)];
+            usedWords.add(currentRoundData.word);
+
             currentPlayerNames = [...players];
             let impostorCount = 1;
             const inp = document.getElementById('impostor-count');
@@ -1201,20 +1552,30 @@
                 impostorIndices.push(indices.splice(ii,1)[0]);
             }
             turnIndex = 0;
+            roundRecorded = false;
 
             document.getElementById('spoiler-section').classList.add('hidden');
-            document.getElementById('btn-spoiler').style.display = 'block';
+            document.getElementById('btn-spoiler').classList.remove('hidden');
             const results = document.getElementById('result-controls');
             if(results) results.classList.add('hidden');
             const finalBoard = document.getElementById('final-scoreboard');
             if(finalBoard) finalBoard.classList.add('hidden');
+            const msg = document.getElementById('round-result-msg');
+            if(msg) msg.classList.add('hidden');
 
+            saveState();
             updatePassScreen();
             showScreen('screen-pass');
         }
 
         function updatePassScreen() {
             document.getElementById('current-player-name').innerText = currentPlayerNames[turnIndex];
+            // Bloqueo breve para que un doble toque no revele la carta del siguiente
+            const btn = document.getElementById('btn-reveal');
+            if(btn){
+                btn.disabled = true;
+                setTimeout(() => { btn.disabled = false; }, 700);
+            }
         }
 
         function updateScoreboard(targetId = 'final-scoreboard'){
@@ -1222,15 +1583,30 @@
             if(!board) return;
             board.innerHTML = '';
 
+            // Ranking de puntos
+            const ranking = Object.entries(scores).sort((a, b) => b[1] - a[1]);
+            if(ranking.length){
+                const maxPts = ranking[0][1];
+                const list = document.createElement('div');
+                list.className = 'mb-4 md:mb-6 bg-black/60 rounded-xl md:rounded-2xl p-4 md:p-5 border-2 border-white/10 shadow-lg text-left';
+                list.innerHTML = '<p class="text-xs text-slate-400 uppercase tracking-widest font-black mb-2">🏆 Marcador</p>' +
+                    ranking.map(([name, pts], i) => `
+                        <div class="flex justify-between items-center py-1.5 md:py-2 ${i > 0 ? 'border-t border-white/10' : ''}">
+                            <span class="text-white font-bold text-sm md:text-base truncate pr-2">${pts > 0 && pts === maxPts ? '👑 ' : ''}${escapeHtml(name)}</span>
+                            <span class="text-pink-300 font-black text-base md:text-lg">${pts}</span>
+                        </div>`).join('');
+                board.appendChild(list);
+            }
+
             // Mostrar historial de rondas
             if(roundHistory.length === 0){
-                board.innerHTML = '<p class="text-slate-400 text-center py-6 font-semibold">Sin historial de rondas aún</p>';
+                board.insertAdjacentHTML('beforeend', '<p class="text-slate-400 text-center py-6 font-semibold">Sin historial de rondas aún</p>');
                 return;
             }
 
             // Invertir historial para mostrar más reciente primero
             const reversedHistory = [...roundHistory].reverse();
-            
+
             const total = reversedHistory.length;
             const pages = Math.ceil(total / scoreboardPerPage) || 1;
             if(scoreboardPage < 0) scoreboardPage = 0;
@@ -1239,17 +1615,17 @@
             const pageEntries = reversedHistory.slice(start, start + scoreboardPerPage);
 
             pageEntries.forEach((round, i) => {
-                const actualIndex = roundHistory.length - (start + i);
-                const won = round.won !== undefined ? round.won : false;
-                const resultIcon = won ? '✓' : '✗';
-                const resultColor = won ? 'text-green-400' : 'text-red-400';
+                const roundNumber = roundHistory.length - (start + i);
+                const winner = round.winner || (round.won ? 'impostor' : 'nadie');
+                const resultIcon = winner === 'impostor' ? '😈' : (winner === 'inocentes' ? '😇' : '⚪');
+                const resultColor = winner === 'impostor' ? 'text-red-400' : (winner === 'inocentes' ? 'text-green-400' : 'text-slate-400');
                 const row = document.createElement('div');
                 row.className = 'scoreboard-item bg-white/8 rounded-xl md:rounded-2xl px-4 md:px-5 py-3 md:py-4 mb-2 md:mb-3 shadow-lg';
                 row.innerHTML = `
                     <div class="flex flex-col gap-2 md:gap-2.5">
                         <div class="flex items-center justify-between">
                             <div class="flex items-center gap-2 md:gap-3">
-                                <span class="font-mono text-sm md:text-base text-slate-300 font-black">#${roundHistory.length - actualIndex}</span>
+                                <span class="font-mono text-sm md:text-base text-slate-300 font-black">#${roundNumber}</span>
                                 <span class="text-xs md:text-sm text-slate-400 uppercase font-bold">${escapeHtml(round.category)}</span>
                             </div>
                             <span class="${resultColor} text-xl md:text-3xl font-black">${resultIcon}</span>
@@ -1299,9 +1675,13 @@
         function resetScores(){
             if(!confirm('¿Deseas reiniciar el marcador?')) return;
             scores = {};
+            players.forEach(p => { scores[p] = 0; });
             roundHistory = [];
+            scoreboardPage = 0;
+            usedWords.clear();
             const final = document.getElementById('final-scoreboard');
             if(final) final.classList.add('hidden');
+            saveState();
             updateScoreboard();
         }
 
@@ -1319,24 +1699,23 @@
             const icon = document.getElementById('role-icon');
 
             hintBox.classList.add('hidden');
-            
+
             if (isImpostor) {
                 icon.innerText = "😈";
                 title.innerText = "ERES EL IMPOSTOR";
                 title.style.color = "#ef4444";
-                
+
                 word.innerText = "IMPOSTOR";
-                word.className = "text-5xl md:text-6xl font-black mb-2 role-impostor animate-pulse";
-                
-                hintBox.classList.remove('hidden');
-                
-                // Asignar pista según el índice del impostor
-                const impostorIndexInArray = impostorIndices.indexOf(turnIndex);
-                const hints = currentRoundData.hints || [currentRoundData.hint]; // Compatibilidad con formato antiguo
-                const selectedHint = hints[impostorIndexInArray] || hints[0]; // Si hay más impostores que pistas, usar la primera
-                
-                hintText.innerText = selectedHint.toUpperCase();
-                
+                word.className = "text-3xl md:text-6xl font-black uppercase break-words leading-tight mb-2 md:mb-4 role-impostor";
+
+                const hints = Array.isArray(currentRoundData.hints) ? currentRoundData.hints : [];
+                if (showHints && hints.length) {
+                    hintBox.classList.remove('hidden');
+                    // Cada impostor recibe una pista distinta mientras alcancen
+                    const impostorIndexInArray = impostorIndices.indexOf(turnIndex);
+                    hintText.innerText = String(hints[impostorIndexInArray % hints.length]).toUpperCase();
+                }
+
                 card.style.borderColor = "#ef4444";
                 card.style.boxShadow = "inset 0 0 80px rgba(239, 68, 68, 0.4), 0 25px 80px rgba(239, 68, 68, 0.3)";
 
@@ -1346,8 +1725,8 @@
                 title.style.color = "#38bdf8";
 
                 word.innerText = currentRoundData.word;
-                word.className = "text-4xl md:text-6xl font-black mb-2 role-innocent uppercase";
-                
+                word.className = "text-3xl md:text-6xl font-black uppercase break-words leading-tight mb-2 md:mb-4 role-innocent";
+
                 card.style.borderColor = "#38bdf8";
                 card.style.boxShadow = "inset 0 0 80px rgba(56, 189, 248, 0.2), 0 25px 80px rgba(56, 189, 248, 0.15)";
             }
@@ -1357,7 +1736,7 @@
 
         function nextTurn() {
             turnIndex++;
-            if (turnIndex < players.length) {
+            if (turnIndex < currentPlayerNames.length) {
                 updatePassScreen();
                 showScreen('screen-pass');
             } else {
@@ -1370,83 +1749,72 @@
             document.getElementById('reveal-word-final').innerText = currentRoundData.word;
             const impostorNames = (impostorIndices||[]).map(i => currentPlayerNames[i]).filter(Boolean).join(', ');
             document.getElementById('reveal-impostor-final').innerText = impostorNames || '—';
-            
+
             document.getElementById('spoiler-section').classList.remove('hidden');
-            document.getElementById('btn-spoiler').style.display = 'none';
+            document.getElementById('btn-spoiler').classList.add('hidden');
             const results = document.getElementById('result-controls');
             if(results) results.classList.remove('hidden');
         }
 
         function awardImpostorPoint(){
-            const names = [];
             (impostorIndices||[]).forEach(idx => {
                 const n = currentPlayerNames[idx];
-                if(n){
-                    scores[n] = (scores[n] || 0) + 1;
-                    names.push(n);
-                }
+                if(n) scores[n] = (scores[n] || 0) + 1;
             });
-            afterAward(true); // true = impostor ganó
-            if(names.length) alert(`${names.join(', ')} obtiene(n) +1 punto(s) (Impostores ganaron)`);
+            afterAward('impostor');
+        }
+
+        function awardInnocentsPoint(){
+            currentPlayerNames.forEach((n, idx) => {
+                if(n && !impostorIndices.includes(idx)) scores[n] = (scores[n] || 0) + 1;
+            });
+            afterAward('inocentes');
         }
 
         function noPointsThisRound(){
-            afterAward(false); // false = impostor perdió
-            alert('Nadie suma puntos esta ronda');
+            afterAward('nadie');
         }
 
-        function afterAward(impostorWon = false){
+        function afterAward(winner){
             // Guardar historial de la ronda
             const impostorNames = (impostorIndices||[]).map(i => currentPlayerNames[i]).filter(Boolean);
             roundHistory.push({
                 word: currentRoundData.word,
                 impostors: impostorNames,
                 category: currentRoundData.cat,
-                won: impostorWon
+                winner
             });
-            
+            roundRecorded = true;
+
+            const msg = document.getElementById('round-result-msg');
+            if(msg){
+                msg.innerText = winner === 'impostor'
+                    ? `😈 +1 punto para: ${impostorNames.join(', ')}`
+                    : (winner === 'inocentes' ? '😇 +1 punto para los inocentes' : '⚪ Nadie suma puntos esta ronda');
+                msg.classList.remove('hidden');
+            }
+
             // Ocultar el spoiler-section cuando se muestre el marcador
             const spoilerSection = document.getElementById('spoiler-section');
             if(spoilerSection) spoilerSection.classList.add('hidden');
-            
+
             const final = document.getElementById('final-scoreboard');
             if(final) final.classList.remove('hidden');
             scoreboardPage = 0;
             updateScoreboard('final-scoreboard');
             const results = document.getElementById('result-controls');
             if(results) results.classList.add('hidden');
-            document.getElementById('btn-spoiler').style.display = 'none';
+            document.getElementById('btn-spoiler').classList.add('hidden');
+            saveState();
         }
 
         function restartGame() {
+            if(!roundRecorded && !confirm('Aún no registraste el resultado de esta ronda y no contará en el marcador. ¿Empezar otra ronda igualmente?')) return;
             setupRound();
-        }
-
-        function fullReset() {
-            showScreen('screen-setup');
-            focusLastPlayerInput();
         }
 
         function goToSetup(){
             showScreen('screen-setup');
-            const shell = document.querySelector('#screen-setup');
-            if(shell) shell.scrollIntoView({behavior:'smooth', block:'center'});
-            focusLastPlayerInput();
-        }
-
-        function focusLastPlayerInput(){
-            setTimeout(()=>{
-                const inputs = document.getElementsByClassName('player-input');
-                if(inputs.length){
-                    const last = inputs[inputs.length-1];
-                    last.focus();
-                    last.scrollIntoView({behavior:'smooth', block:'center'});
-                } else {
-                    addPlayerInput('');
-                    const newInputs = document.getElementsByClassName('player-input');
-                    if(newInputs.length) newInputs[newInputs.length-1].focus();
-                }
-            },150);
         }
 
         document.addEventListener('DOMContentLoaded', () => {
