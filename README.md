@@ -47,7 +47,7 @@
     * Resultado (**✓ si ganó, ✗ si perdió**) ✅/❌
 * Se muestran 3 rondas por página con paginación
 
-### 🗃️ Base de Datos
+### 🗃️ Base de Datos (Diccionario)
 
 * **Más de 250 palabras** organizadas en **12 categorías**: 🚀
     * Deportes ⚽
