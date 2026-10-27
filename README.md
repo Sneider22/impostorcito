@@ -102,6 +102,6 @@ impostorcito/
 
 <div align="center">
 
-Hecho con ❤️ entre amigos por **Sneider, Nicol y Raiber**
+Sneider Araque
 
 </div>
